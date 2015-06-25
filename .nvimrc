@@ -76,6 +76,7 @@ let $RUST_SRC_PATH="/usr/local/src/rust/src/"
 set number
 set mouse=a
 set backspace=2 " make backspace work like most other apps
+set clipboard=unnamed " make clipboard work
 
 " Use tabs instead of spaces
 filetype plugin indent on
