@@ -5,6 +5,7 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -40,10 +41,9 @@ Plugin 'eagletmt/neco-ghc'
 
 Plugin 'elixir-lang/vim-elixir'
 
-call vundle#end()            " required
+Plugin 'kien/ctrlp.vim'
 
-" neco-ghc
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
+call vundle#end()            " required
 
 " Pathogen
 execute pathogen#infect()
@@ -69,7 +69,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Rust
 set hidden
-let g:racer_cmd = "/Users/lander/development/target/release/racer"
+let g:racer_cmd = "/Users/lander/development/racer/target/release/racer"
 let $RUST_SRC_PATH="/usr/local/src/rust/src/"
 
 " Misc
@@ -83,3 +83,15 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
+
+" neco-ghc
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
+
+" ctrlp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
+

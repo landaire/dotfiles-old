@@ -18,6 +18,8 @@ HISTFILE=~/.zsh_history
 
 bindkey -e
 bindkey '^R' history-incremental-search-backward
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOCONNECT=false
