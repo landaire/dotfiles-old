@@ -24,6 +24,7 @@ bindkey "^[[1;5D" backward-word
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOCONNECT=false
 
+antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
