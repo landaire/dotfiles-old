@@ -1,6 +1,6 @@
 alias vim=nvim
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export EDITOR="vim"
+export EDITOR="nvim"
 export PATH=/usr/pkg/sbin:/usr/pkg/bin:/Users/lander/Library/Haskell/bin:$PATH
 export MANPATH=/usr/pkg/man:$MANPATH
 

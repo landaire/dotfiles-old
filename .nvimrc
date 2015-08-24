@@ -43,12 +43,16 @@ Plugin 'elixir-lang/vim-elixir'
 
 Plugin 'kien/ctrlp.vim'
 
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
 call vundle#end()            " required
 
 " Pathogen
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
+
+au FileType gitcommit set tw=72 | set spell | set colorcolumn=50
 
 " Color scheme
 " background=dark
@@ -77,6 +81,7 @@ set number
 set mouse=a
 set backspace=2 " make backspace work like most other apps
 set clipboard=unnamed " make clipboard work
+set ruler
 
 " Use tabs instead of spaces
 filetype plugin indent on
@@ -94,4 +99,6 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
+
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
