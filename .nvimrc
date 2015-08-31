@@ -25,7 +25,7 @@ Plugin 'fatih/vim-go'
 
 Plugin 'mbbill/undotree'
 
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'
 
 Plugin 'spf13/vim-autoclose'
 
@@ -39,11 +39,11 @@ Plugin 'phildawes/racer'
 
 Plugin 'eagletmt/neco-ghc'
 
-Plugin 'elixir-lang/vim-elixir'
-
 Plugin 'kien/ctrlp.vim'
 
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+" Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+Plugin 'elixir-lang/vim-elixir'
 
 call vundle#end()            " required
 
@@ -68,8 +68,9 @@ nnoremap <F5> :UndotreeToggle<cr>
 
 " Nerdtree
 map <C-n> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+let g:NERDTreeHijackNetrw=0
+:let g:loaded_netrw       = 1
+:let g:loaded_netrwPlugin = 1
 
 " Rust
 set hidden
@@ -100,5 +101,4 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
 
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
-
+" map <Leader>n <plug>NERDTreeTabsToggle<CR>
