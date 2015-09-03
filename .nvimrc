@@ -25,6 +25,10 @@ Plugin 'fatih/vim-go'
 
 Plugin 'mbbill/undotree'
 
+Plugin 'idanarye/vim-dutyl'
+Plugin 'kiith-sa/DSnips'
+Plugin 'JesseKPhillips/d.vim'
+
 " Plugin 'scrooloose/nerdtree'
 
 Plugin 'spf13/vim-autoclose'
@@ -55,10 +59,10 @@ filetype plugin indent on
 au FileType gitcommit set tw=72 | set spell | set colorcolumn=50
 
 " Color scheme
-" background=dark
+set background=dark
 " let base16colorspace=256  " Access colors present in 256 colorspace
-" colorscheme base16-ocean
-colorscheme darcula
+colorscheme base16-ocean
+" colorscheme darcula
 
 " Autoclose
 let g:autoclose_vim_commentmode = 1
@@ -67,10 +71,10 @@ let g:autoclose_vim_commentmode = 1
 nnoremap <F5> :UndotreeToggle<cr>
 
 " Nerdtree
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeHijackNetrw=0
-:let g:loaded_netrw       = 1
-:let g:loaded_netrwPlugin = 1
+"map <C-n> :NERDTreeToggle<CR>
+"let g:NERDTreeHijackNetrw=0
+":let g:loaded_netrw       = 1
+":let g:loaded_netrwPlugin = 1
 
 " Rust
 set hidden
@@ -100,5 +104,13 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
+
+" D config
+let g:dutyl_stdImportPaths=['/usr/local/include/d2/']
+
+call dutyl#register#tool('dcd-client','/usr/local/bin/dcd-client')
+call dutyl#register#tool('dcd-server','/usr/local/bin/dcd-server')
+call dutyl#register#tool('dscanner','/Users/lander/development/Dscanner/bin/scanner')
+call dutyl#register#tool('dfmt','/Users/lander/development/dfmt/bin/dfmt')
 
 " map <Leader>n <plug>NERDTreeTabsToggle<CR>
