@@ -60,8 +60,9 @@ au FileType gitcommit set tw=72 | set spell | set colorcolumn=50
 
 " Color scheme
 set background=dark
-" let base16colorspace=256  " Access colors present in 256 colorspace
+let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-ocean
+let g:base16_shell_path="$HOME/.config/base16-shell"
 " colorscheme darcula
 
 " Autoclose
