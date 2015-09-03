@@ -3,6 +3,7 @@
 	email = landerbrandt@gmail.com
 [core]
 	excludesfile = ~/.gitignore
+	editor = nvim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
