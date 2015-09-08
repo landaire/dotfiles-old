@@ -10,6 +10,8 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
+Plugin 'Chiel92/vim-autoformat'
+
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
@@ -48,6 +50,8 @@ Plugin 'kien/ctrlp.vim'
 " Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 Plugin 'elixir-lang/vim-elixir'
+
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()            " required
 
@@ -113,5 +117,21 @@ call dutyl#register#tool('dcd-client','/usr/local/bin/dcd-client')
 call dutyl#register#tool('dcd-server','/usr/local/bin/dcd-server')
 call dutyl#register#tool('dscanner','/Users/lander/development/Dscanner/bin/scanner')
 call dutyl#register#tool('dfmt','/Users/lander/development/dfmt/bin/dfmt')
+call dutyl#register#tool('dub','/usr/local/bin/dub')
+
+let g:formatdef_dfmt = '"/Users/lander/development/dfmt/bin/dfmt"'
+let g:formatters_d = ['dfmt']
+
+
+" Autochdir
+" set vim to chdir for each file
+if exists('+autochdir')
+    set autochdir
+else
+    autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+endif
+
+" Go
+let g:go_fmt_command = "/Users/lander/go/bin/goimports"
 
 " map <Leader>n <plug>NERDTreeTabsToggle<CR>

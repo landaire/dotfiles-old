@@ -34,12 +34,12 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 #antigen bundle tmux
 
+antigen apply
+
 # bind UP and DOWN arrow keys -- this is for history substring search
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
-
-antigen apply
 
 # Skip forward/back a word with opt-arrow
 bindkey '[C' forward-word
