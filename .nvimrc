@@ -60,7 +60,7 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
-au FileType gitcommit set tw=72 | set spell | set colorcolumn=50
+au FileType gitcommit set tw=72 |  set colorcolumn=50 
 
 " Color scheme
 set background=dark
