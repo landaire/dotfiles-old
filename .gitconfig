@@ -2,7 +2,7 @@
 	name = Lander Brandt
 	email = landerbrandt@gmail.com
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/lander/.gitignore_global
 	editor = nvim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"

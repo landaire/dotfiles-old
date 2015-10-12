@@ -3,7 +3,7 @@ source $HOME/.antigen/antigen.zsh
 export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$HOME/.cabal/bin
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
+#export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
 
 source $HOME/.profile
 
@@ -17,8 +17,16 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
 
-SAVEHIST=500
+SAVEHIST=10000
+HISTSIZE=10000
 HISTFILE=~/.zsh_history
+setopt APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt NO_HIST_BEEP
+setopt SHARE_HISTORY
 
 bindkey -e
 bindkey '^R' history-incremental-search-backward
@@ -67,3 +75,4 @@ man() {
     LESS_TERMCAP_us=$(printf "\e[1;32m") \
     man "$@"
 }
+

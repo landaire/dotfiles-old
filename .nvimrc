@@ -10,6 +10,10 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
+Plugin 'scrooloose/syntastic'
+
+Plugin 'szw/vim-ctrlspace'
+
 Plugin 'Chiel92/vim-autoformat'
 
 " let Vundle manage Vundle, required
@@ -31,7 +35,7 @@ Plugin 'idanarye/vim-dutyl'
 Plugin 'kiith-sa/DSnips'
 Plugin 'JesseKPhillips/d.vim'
 
-" Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 
 Plugin 'spf13/vim-autoclose'
 
@@ -47,7 +51,7 @@ Plugin 'eagletmt/neco-ghc'
 
 Plugin 'kien/ctrlp.vim'
 
-" Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 Plugin 'elixir-lang/vim-elixir'
 
@@ -76,7 +80,7 @@ let g:autoclose_vim_commentmode = 1
 nnoremap <F5> :UndotreeToggle<cr>
 
 " Nerdtree
-"map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 "let g:NERDTreeHijackNetrw=0
 ":let g:loaded_netrw       = 1
 ":let g:loaded_netrwPlugin = 1
@@ -135,3 +139,22 @@ endif
 let g:go_fmt_command = "/Users/lander/go/bin/goimports"
 
 " map <Leader>n <plug>NERDTreeTabsToggle<CR>
+
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Move text blocks up and down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
