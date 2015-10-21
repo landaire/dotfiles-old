@@ -1,5 +1,6 @@
 alias vim=nvim
 alias vimr='open -a vimr.app "$@"'
+alias cat=ccat
 export PATH="$HOME/.rvm/bin:$HOME/.local/bin:$PATH" # Add RVM to PATH for scripting
 export EDITOR="nvim"
 export PATH=/usr/pkg/sbin:/usr/pkg/bin:/Library/Haskell/bin:$PATH
