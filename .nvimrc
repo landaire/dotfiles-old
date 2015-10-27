@@ -64,6 +64,11 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+" Show the 80-char color column in all files
+highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+set colorcolumn=80
+
+" Show athe colorcolumn when editing a git commit
 au FileType gitcommit set tw=72 |  set colorcolumn=50 
 
 " Color scheme
@@ -125,6 +130,9 @@ call dutyl#register#tool('dub','/usr/local/bin/dub')
 
 let g:formatdef_dfmt = '"/Users/lander/development/dfmt/bin/dfmt"'
 let g:formatters_d = ['dfmt']
+
+let g:formatdef_rustfmt = '"/Users/lander/development/rust/rustfmg/target/release/rustfmt"'
+let g:formatters_rs = ['rustfmt']
 
 
 " Autochdir
