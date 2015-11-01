@@ -125,10 +125,12 @@ let g:dutyl_stdImportPaths=['/usr/local/include/d2/']
 call dutyl#register#tool('dcd-client','/usr/local/bin/dcd-client')
 call dutyl#register#tool('dcd-server','/usr/local/bin/dcd-server')
 call dutyl#register#tool('dscanner','/Users/lander/development/Dscanner/bin/scanner')
-call dutyl#register#tool('dfmt','/Users/lander/development/dfmt/bin/dfmt')
+call dutyl#register#tool('dfmt','/Users/lander/development/dfmt/bin/dfmt --brace_style=otbs')
 call dutyl#register#tool('dub','/usr/local/bin/dub')
 
-let g:formatdef_dfmt = '"/Users/lander/development/dfmt/bin/dfmt"'
+noremap <F3> :Autoformat<CR>
+
+let g:formatdef_dfmt = '"/Users/lander/development/dfmt/bin/dfmt --brace_style=otbs"'
 let g:formatters_d = ['dfmt']
 
 let g:formatdef_rustfmt = '"/Users/lander/development/rust/rustfmg/target/release/rustfmt"'
