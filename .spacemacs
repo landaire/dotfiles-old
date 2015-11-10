@@ -32,6 +32,8 @@
      d
      ;; extra
      auto-completion
+     osx
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -128,7 +130,7 @@ before layers configuration."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'.
@@ -165,9 +167,8 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  (setq-default dotspacemacs-configuration-layers '(osx))
-  (setq-default dotspacemacs-default-font '("Fira Code" :size 8))
   (global-linum-mode)
+  (setq vc-follow-symlinks t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
