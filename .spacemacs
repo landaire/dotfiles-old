@@ -28,18 +28,24 @@
      ;;        shell-default-position 'bottom)
      ;; syntax-checking
      version-control
-     ;; dlang
+     ;; programming languages
      d
+     go
+     rust
+     elixir
      ;; extra
      auto-completion
      osx
      yaml
+     latex
+     markdown
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '(base16-theme)
+   dotspacemacs-additional-packages '(base16-theme
+                                      ac-dcd)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -85,7 +91,7 @@ before layers configuration."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Fira Code"
-                               :size 10
+                               :size 11
                                :weight normal
                                :width normal
                                :powerline-scale 1.2)
@@ -169,6 +175,19 @@ before layers configuration."
 layers configuration."
   (global-linum-mode)
   (setq vc-follow-symlinks t)
+
+  ;;; scroll one line at a time (less "jumpy" than defaults)
+  (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
+  (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+  (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+  (add-hook 'd-mode-hook 'ac-dcd-setup)
+
+  ;;; racer config
+  (setq racer-cmd "/Users/lander/development/racer/target/release/racer")
+  (setq racer-rust-src-path "/usr/local/src/rust/src/")
+
+  ;;; dlang additional setup
+  (add-hook 'd-mode-hook 'ac-dcd-setup)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will

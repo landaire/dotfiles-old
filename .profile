@@ -5,6 +5,7 @@ export PATH="$HOME/.rvm/bin:$HOME/.local/bin:$PATH" # Add RVM to PATH for script
 export EDITOR="nvim"
 export PATH=/usr/pkg/sbin:/usr/pkg/bin:/Library/Haskell/bin:$PATH
 export MANPATH=/usr/pkg/man:$MANPATH
+export RUST_SRC_PATH=/usr/local/src/rust/src
 
 source dnvm.sh
 export DOCKER_TLS_VERIFY=1
