@@ -3,7 +3,8 @@ source $HOME/.antigen/antigen.zsh
 export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$HOME/.cabal/bin
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
+#export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 
 source $HOME/.profile
 
