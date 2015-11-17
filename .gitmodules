@@ -1,0 +1,93 @@
+[submodule ".antigen"]
+	path = .antigen
+	url = https://github.com/zsh-users/antigen
+[submodule ".config/base16-shell"]
+	path = .config/base16-shell
+	url = https://github.com/chriskempson/base16-shell.git
+[submodule ".config/nvim/bundle/DSnips"]
+	path = .config/nvim/bundle/DSnips
+	url = https://github.com/kiith-sa/DSnips.git
+[submodule ".config/nvim/bundle/Vundle.vim"]
+	path = .config/nvim/bundle/Vundle.vim
+	url = https://github.com/gmarik/Vundle.vim.git
+[submodule ".config/nvim/bundle/YouCompleteMe"]
+	path = .config/nvim/bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule ".config/nvim/bundle/base16-vim"]
+	path = .config/nvim/bundle/base16-vim
+	url = https://github.com/chriskempson/base16-vim.git
+[submodule ".config/nvim/bundle/ctrlp.vim"]
+	path = .config/nvim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule ".config/nvim/bundle/d.vim"]
+	path = .config/nvim/bundle/d.vim
+	url = https://github.com/JesseKPhillips/d.vim.git
+[submodule ".config/nvim/bundle/darcula"]
+	path = .config/nvim/bundle/darcula
+	url = https://github.com/blueshirts/darcula.git
+[submodule ".config/nvim/bundle/gocode"]
+	path = .config/nvim/bundle/gocode
+	url = https://github.com/nsf/gocode.git
+[submodule ".config/nvim/bundle/neco-ghc"]
+	path = .config/nvim/bundle/neco-ghc
+	url = https://github.com/eagletmt/neco-ghc.git
+[submodule ".config/nvim/bundle/nerdtree"]
+	path = .config/nvim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".config/nvim/bundle/nerdtree-git-plugin"]
+	path = .config/nvim/bundle/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+[submodule ".config/nvim/bundle/racer"]
+	path = .config/nvim/bundle/racer
+	url = https://github.com/phildawes/racer.git
+[submodule ".config/nvim/bundle/rust.vim"]
+	path = .config/nvim/bundle/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
+[submodule ".config/nvim/bundle/syntastic"]
+	path = .config/nvim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule ".config/nvim/bundle/tagbar"]
+	path = .config/nvim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule ".config/nvim/bundle/undotree"]
+	path = .config/nvim/bundle/undotree
+	url = https://github.com/mbbill/undotree.git
+[submodule ".config/nvim/bundle/vim-autoclose"]
+	path = .config/nvim/bundle/vim-autoclose
+	url = https://github.com/spf13/vim-autoclose.git
+[submodule ".config/nvim/bundle/vim-autoformat"]
+	path = .config/nvim/bundle/vim-autoformat
+	url = https://github.com/Chiel92/vim-autoformat.git
+[submodule ".config/nvim/bundle/vim-ctrlspace"]
+	path = .config/nvim/bundle/vim-ctrlspace
+	url = https://github.com/szw/vim-ctrlspace.git
+[submodule ".config/nvim/bundle/vim-dutyl"]
+	path = .config/nvim/bundle/vim-dutyl
+	url = https://github.com/idanarye/vim-dutyl.git
+[submodule ".config/nvim/bundle/vim-elixir"]
+	path = .config/nvim/bundle/vim-elixir
+	url = https://github.com/elixir-lang/vim-elixir.git
+[submodule ".config/nvim/bundle/vim-go"]
+	path = .config/nvim/bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule ".config/nvim/bundle/vim-pathogen"]
+	path = .config/nvim/bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule ".emacs.d"]
+	path = .emacs.d
+	url = https://github.com/syl20bnr/spacemacs
+[submodule ".tmux/plugins/tmux-copycat"]
+	path = .tmux/plugins/tmux-copycat
+	url = https://git::@github.com/tmux-plugins/tmux-copycat
+[submodule ".tmux/plugins/tmux-pain-control"]
+	path = .tmux/plugins/tmux-pain-control
+	url = https://git::@github.com/tmux-plugins/tmux-pain-control
+[submodule ".tmux/plugins/tmux-scroll-copy-mode"]
+	path = .tmux/plugins/tmux-scroll-copy-mode
+	url = https://git::@github.com/nhdaly/tmux-scroll-copy-mode
+[submodule ".tmux/plugins/tmux-sensible"]
+	path = .tmux/plugins/tmux-sensible
+	url = https://git::@github.com/tmux-plugins/tmux-sensible
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
