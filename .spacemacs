@@ -45,7 +45,8 @@
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(base16-theme
-                                      ac-dcd)
+                                      ac-dcd
+                                      swift-mode)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -78,7 +79,8 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(base16-ocean-dark
+   dotspacemacs-themes '(base16-tomorrow-dark
+                         base16-ocean-dark
                          spacemacs-light
                          spacemacs-dark
                          solarized-light
@@ -184,6 +186,9 @@ layers configuration."
   ;;; racer config
   (setq racer-cmd "/Users/lander/development/racer/target/release/racer")
   (setq racer-rust-src-path "/usr/local/src/rust/src/")
+
+  ;;; golang config
+  (setq gofmt-command "goimports")
 
   ;;; dlang additional setup
   (add-hook 'd-mode-hook 'ac-dcd-setup)
