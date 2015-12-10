@@ -6,6 +6,7 @@ export EDITOR="nvim"
 export PATH=/usr/pkg/sbin:/usr/pkg/bin:/Library/Haskell/bin:$PATH
 export MANPATH=/usr/pkg/man:$MANPATH
 export RUST_SRC_PATH=/usr/local/src/rust/src
+export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
 
 source dnvm.sh
 export DOCKER_TLS_VERIFY=1
