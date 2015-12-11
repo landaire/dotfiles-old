@@ -93,7 +93,7 @@ before layers configuration."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Fira Code"
-                               :size 11
+                               :size 10
                                :weight normal
                                :width normal
                                :powerline-scale 1.2)
@@ -176,6 +176,12 @@ before layers configuration."
 layers configuration."
   (global-linum-mode)
   (setq vc-follow-symlinks t)
+
+  ;;; Key bindings
+  (global-set-key (kbd "s-/") 'comment-or-uncomment-region)
+
+  ;;; Font settings
+  (setq line-spacing 0.2)
 
   ;;; scroll one line at a time (less "jumpy" than defaults)
   (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
