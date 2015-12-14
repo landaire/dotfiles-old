@@ -33,20 +33,23 @@
      go
      rust
      elixir
-     ;; extra
-     auto-completion
-     osx
+     swift
+     ;; other "languages"
      yaml
      latex
      markdown
+     ;; extra
+     auto-completion
+     osx
+     spacemacs-layouts
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(base16-theme
-                                      ac-dcd
-                                      swift-mode)
+                                      ;; ac-dcd
+                                      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -93,7 +96,7 @@ before layers configuration."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Fira Code"
-                               :size 10
+                               :size 11
                                :weight normal
                                :width normal
                                :powerline-scale 1.2)
@@ -131,7 +134,7 @@ before layers configuration."
    dotspacemacs-loading-progress-bar t
    ;; If non nil the frame is fullscreen when Emacs starts up.
    ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup nil
+   dotspacemacs-fullscreen-at-startup t
    ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX."
    dotspacemacs-fullscreen-use-non-native nil
@@ -184,10 +187,9 @@ layers configuration."
   (setq line-spacing 0.2)
 
   ;;; scroll one line at a time (less "jumpy" than defaults)
-  (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
-  (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-  (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-  (add-hook 'd-mode-hook 'ac-dcd-setup)
+  ;; (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
+  ;; (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+  ;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
   ;;; racer config
   (setq racer-cmd "/Users/lander/development/racer/target/release/racer")
@@ -197,7 +199,10 @@ layers configuration."
   (setq gofmt-command "goimports")
 
   ;;; dlang additional setup
-  (add-hook 'd-mode-hook 'ac-dcd-setup)
+  ;; (add-hook 'd-mode-hook 'ac-dcd-setup)
+
+  ;;; projectile settings
+  (setq projectile-switch-project-action 'projectile-dired)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
