@@ -17,39 +17,39 @@
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
-     ;; better-defaults
-     emacs-lisp
-     ;; git
-     ;; markdown
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; syntax-checking
-     version-control
-     ;; programming languages
-     d
-     go
-     rust
-     elixir
-     swift
-     ;; other "languages"
-     yaml
-     latex
-     markdown
-     ;; extra
-     auto-completion
-     osx
-     spacemacs-layouts
+      auto-completion
+      better-defaults
+      emacs-lisp
+      git
+      ;; markdown
+      ;; org
+      (shell :variables
+              shell-default-height 30
+              shell-default-position 'bottom)
+      syntax-checking
+      version-control
+      ;; ;; programming languages
+      d
+      go
+      rust
+      elixir
+      swift
+      ;; other "languages"
+      yaml
+      latex
+      markdown
+      ;; extra
+      ;; auto-completion
+      osx
+      spacemacs-layouts
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '(base16-theme
+   dotspacemacs-additional-packages '(
                                       ;; ac-dcd
-                                      )
+                                     )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -82,7 +82,8 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(base16-tomorrow-dark
+   dotspacemacs-themes '(brin
+                         base16-tomorrow-dark
                          base16-ocean-dark
                          spacemacs-light
                          spacemacs-dark
@@ -155,7 +156,7 @@ before layers configuration."
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen.
-   dotspacemacs-smooth-scrolling t
+   dotspacemacs-smooth-scrolling nil
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    dotspacemacs-smartparens-strict-mode nil
    ;; Select a scope to highlight delimiters. Possible value is `all',
@@ -177,7 +178,10 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  (global-linum-mode)
+
+  (global-linum-mode) ; Enable line numbers
+  (global-hl-line-mode -1) ; Disable current line highlight
+
   (setq vc-follow-symlinks t)
 
   ;;; Key bindings
@@ -190,6 +194,12 @@ layers configuration."
   ;; (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
   ;; (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
   ;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+  ;; (setq redisplay-dont-pause t
+  ;;       scroll-margin 1
+  ;;       scroll-step 1
+  ;;       scroll-conservatively 1
+  ;;       scroll-preserve-screen-position 1
+  ;;       scroll-margin 7)
 
   ;;; racer config
   (setq racer-cmd "/Users/lander/development/racer/target/release/racer")
