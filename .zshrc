@@ -36,12 +36,16 @@ bindkey "^[[1;5D" backward-word
 
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOCONNECT=false
+PURE_PROMPT_SYMBOL=\$
 
 antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle b4b4r07/enhancd
+antigen bundle skx/sysadmin-util
 #antigen bundle tmux
+
 
 antigen apply
 
