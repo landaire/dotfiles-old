@@ -213,6 +213,9 @@ layers configuration."
 
   ;;; projectile settings
   (setq projectile-switch-project-action 'projectile-dired)
+
+  ;;; powerline settings
+  (setq powerline-default-separator nil)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
