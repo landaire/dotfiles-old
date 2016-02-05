@@ -58,6 +58,7 @@ Plug 'spf13/vim-autoclose'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
+Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'elixir-lang/vim-elixir'
 
