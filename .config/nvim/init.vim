@@ -3,61 +3,65 @@ filetype off                  " required
 
 autocmd filetype crontab setlocal nobackup nowritebackup
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
 
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
-Plugin 'scrooloose/syntastic'
+Plug 'MattesGroeger/vim-bookmarks'
 
-Plugin 'szw/vim-ctrlspace'
+Plug 'scrooloose/syntastic'
 
-Plugin 'Chiel92/vim-autoformat'
+Plug 'szw/vim-ctrlspace'
+
+Plug 'Chiel92/vim-autoformat'
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plug 'gmarik/Vundle.vim'
 
 " Pathoegn
-Plugin 'tpope/vim-pathogen'
+Plug 'tpope/vim-pathogen'
 
 " Color scheme
-Plugin 'chriskempson/base16-vim'
-Plugin 'blueshirts/darcula'
+Plug 'chriskempson/base16-vim'
+Plug 'blueshirts/darcula'
 
 " vim-go
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
-Plugin 'mbbill/undotree'
+Plug 'mbbill/undotree'
 
-Plugin 'idanarye/vim-dutyl'
-Plugin 'kiith-sa/DSnips'
-Plugin 'JesseKPhillips/d.vim'
+Plug 'idanarye/vim-dutyl'
+Plug 'kiith-sa/DSnips'
+Plug 'JesseKPhillips/d.vim'
 
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
-Plugin 'spf13/vim-autoclose'
+Plug 'Shougo/deoplete.nvim'
 
-Plugin 'Valloric/YouCompleteMe'
+Plug 'nsf/gocode', {'rtp': 'vim/'}
 
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plug 'rust-lang/rust.vim'
 
-Plugin 'rust-lang/rust.vim'
+Plug 'phildawes/racer'
 
-Plugin 'phildawes/racer'
+Plug 'eagletmt/neco-ghc'
 
-Plugin 'eagletmt/neco-ghc'
+" Interface
+Plug 'kien/ctrlp.vim'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'bling/vim-airline'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'spf13/vim-autoclose'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'godlygeek/tabular'
+Plug 'airblade/vim-gitgutter'
 
-Plugin 'kien/ctrlp.vim'
+Plug 'elixir-lang/vim-elixir'
 
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-
-Plugin 'elixir-lang/vim-elixir'
-
-Plugin 'majutsushi/tagbar'
-
-call vundle#end()            " required
+call plug#end()            " required
 
 " Pathogen
 execute pathogen#infect()
@@ -109,7 +113,7 @@ set shiftwidth=4
 set expandtab
 
 " neco-ghc
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
+" let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 " ctrlp
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
@@ -127,6 +131,8 @@ call dutyl#register#tool('dcd-server','/usr/local/bin/dcd-server')
 call dutyl#register#tool('dscanner','/Users/lander/development/Dscanner/bin/scanner')
 call dutyl#register#tool('dfmt','/Users/lander/development/dfmt/bin/dfmt --brace_style=otbs')
 call dutyl#register#tool('dub','/usr/local/bin/dub')
+
+let g:deoplete#enable_at_startup = 1
 
 noremap <F3> :Autoformat<CR>
 
