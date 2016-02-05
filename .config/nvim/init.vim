@@ -28,6 +28,7 @@ Plug 'blueshirts/darcula'
 
 " vim-go
 Plug 'fatih/vim-go'
+Plug 'zchee/deoplete-go'
 
 Plug 'mbbill/undotree'
 
