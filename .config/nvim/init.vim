@@ -48,10 +48,14 @@ Plug 'phildawes/racer'
 
 Plug 'eagletmt/neco-ghc'
 
+" Utilities
+Plug 'jeetsukumaran/vim-buffergator'
+
 " Interface
 Plug 'kien/ctrlp.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
@@ -75,7 +79,7 @@ highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 set colorcolumn=80
 
 " Show athe colorcolumn when editing a git commit
-au FileType gitcommit set tw=72 |  set colorcolumn=50 
+au FileType gitcommit set tw=72 |  set colorcolumn=50
 
 " Color scheme
 set background=dark
@@ -83,6 +87,10 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-ocean
 let g:base16_shell_path="$HOME/.config/base16-shell"
 " colorscheme darcula
+
+" Airline
+autocmd vimenter * AirlineTheme 'base16_ocean'
+let g:airline#extensions#tabline#enabled = 1
 
 " Autoclose
 let g:autoclose_vim_commentmode = 1
