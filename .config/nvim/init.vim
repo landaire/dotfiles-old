@@ -3,10 +3,7 @@ filetype off                  " required
 
 autocmd filetype crontab setlocal nobackup nowritebackup
 
-
 call plug#begin('~/.vim/plugged')
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 Plug 'MattesGroeger/vim-bookmarks'
 
@@ -50,6 +47,10 @@ Plug 'eagletmt/neco-ghc'
 
 " Utilities
 Plug 'jeetsukumaran/vim-buffergator'
+" Substitution preview
+Plug 'osyo-manga/vim-over'
+" Commenting crap
+Plug 'scrooloose/nerdcommenter'
 
 " Interface
 Plug 'kien/ctrlp.vim'
@@ -64,10 +65,63 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
+" Distraction-free writing
+Plug 'junegunn/goyo.vim'
 
 Plug 'elixir-lang/vim-elixir'
 
 call plug#end()            " required
+
+" General settings
+
+" Map ,e to go out of term mode to normal mode
+tnoremap <Leader>e <C-\><C-n>
+
+set autoindent " Indent based off the last line
+
+set ruler " Show the line number and column
+
+set textwidth=250    " Maximum width of text that is being inserted. A longer
+                    " line will be broken after white space to get this width.
+
+set formatoptions=c,q,r,t " This is a sequence of letters which describes how
+                    " automatic formatting is to be done.
+                    "
+                    " letter    meaning when present in 'formatoptions'
+                    " ------    ---------------------------------------
+                    " c         Auto-wrap comments using textwidth, inserting
+                    "           the current comment leader automatically.
+                    " q         Allow formatting of comments with "gq".
+                    " r         Automatically insert the current comment leader
+                    "           after hitting <Enter> in Insert mode.
+                    " t         Auto-wrap text using textwidth (does not apply
+                    "           to comments)<Paste>
+
+set showmatch " Jump to matching bracket when one is inserted
+
+set hlsearch    " When there is a previous search pattern highlight all of its
+                " matches
+
+set incsearch   " Show matches while typing
+
+set ignorecase  " Ignore case when searching
+
+set smartcase   " Override ignorecase if an uppercase char is in the search
+
+" Misc
+set number
+set mouse=a
+set backspace=2 " make backspace work like most other apps
+set clipboard=unnamed " make clipboard work
+
+" Use tabs instead of spaces
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" Remap leader to comma
+let  mapleader = ','
 
 " Pathogen
 execute pathogen#infect()
@@ -81,6 +135,7 @@ set colorcolumn=80
 " Show athe colorcolumn when editing a git commit
 au FileType gitcommit set tw=72 |  set colorcolumn=50
 
+" ======== UI Config =========
 " Color scheme
 set background=dark
 let base16colorspace=256  " Access colors present in 256 colorspace
@@ -109,18 +164,6 @@ set hidden
 let g:racer_cmd = "/Users/lander/development/racer/target/release/racer"
 let $RUST_SRC_PATH="/usr/local/src/rust/src/"
 
-" Misc
-set number
-set mouse=a
-set backspace=2 " make backspace work like most other apps
-set clipboard=unnamed " make clipboard work
-set ruler
-
-" Use tabs instead of spaces
-filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
-set expandtab
 
 " neco-ghc
 " let g:ycm_semantic_triggers = {'haskell' : ['.']}
@@ -166,6 +209,9 @@ let g:go_fmt_command = "/Users/lander/go/bin/goimports"
 
 " map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
+" Automatically highlight symbol under cursor
+autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -190,3 +236,6 @@ if has('gui_running')
   set guifont=Fira\ Code:h11
 endif
 
+" Key bindings
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
