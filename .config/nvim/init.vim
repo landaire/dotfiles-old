@@ -144,7 +144,8 @@ let g:base16_shell_path="$HOME/.config/base16-shell"
 " colorscheme darcula
 
 " Airline
-autocmd vimenter * AirlineTheme 'base16_ocean'
+let g:airline_theme = "base16_ocean"
+"autocmd vimenter * AirlineTheme 'base16_ocean'
 let g:airline#extensions#tabline#enabled = 1
 
 " Autoclose
