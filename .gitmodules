@@ -75,7 +75,7 @@
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule ".emacs.d"]
 	path = .emacs.d
-	url = https://github.com/syl20bnr/spacemacs
+	url = git@github.com:syl20bnr/spacemacs.git
 [submodule ".tmux/plugins/tmux-copycat"]
 	path = .tmux/plugins/tmux-copycat
 	url = https://git::@github.com/tmux-plugins/tmux-copycat
