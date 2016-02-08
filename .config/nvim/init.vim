@@ -7,16 +7,13 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'MattesGroeger/vim-bookmarks'
 
+" Syntax checker
 Plug 'scrooloose/syntastic'
+
+" Buffer, tab, file management/fuzzy searching
 Plug 'szw/vim-ctrlspace'
 
 Plug 'Chiel92/vim-autoformat'
-
-" let Vundle manage Vundle, required
-Plug 'gmarik/Vundle.vim'
-
-" Pathoegn
-Plug 'tpope/vim-pathogen'
 
 " Color scheme
 Plug 'chriskempson/base16-vim'
@@ -24,25 +21,23 @@ Plug 'blueshirts/darcula'
 
 " vim-go
 Plug 'fatih/vim-go'
-Plug 'zchee/deoplete-go'
+Plug 'zchee/deoplete-go' " Go autocomplete hook for deoplete
+Plug 'nsf/gocode', {'rtp': 'vim/'} " Go autocomplete daemon
 
-Plug 'mbbill/undotree'
+Plug 'mbbill/undotree' " Show history
 
-Plug 'idanarye/vim-dutyl'
-Plug 'kiith-sa/DSnips'
-Plug 'JesseKPhillips/d.vim'
+Plug 'idanarye/vim-dutyl' " D utils (autocomplete, fmt, etc.)
+Plug 'kiith-sa/DSnips' " D snippets
+Plug 'JesseKPhillips/d.vim' " D highlighting
 
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree' " File tree
 
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim' " Async autocomplete for neovim
 
-Plug 'nsf/gocode', {'rtp': 'vim/'}
+Plug 'rust-lang/rust.vim' " Rust highlighting and other stuff
+Plug 'phildawes/racer' " Rust autocomplete
 
-Plug 'rust-lang/rust.vim'
-
-Plug 'phildawes/racer'
-
-Plug 'eagletmt/neco-ghc'
+Plug 'eagletmt/neco-ghc' " Haskell autocomplete
 
 " Utilities
 Plug 'jeetsukumaran/vim-buffergator'
@@ -115,11 +110,6 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
-
-" Pathogen
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
 
 " Show the 80-char color column in all files
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
