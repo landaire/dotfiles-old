@@ -183,6 +183,7 @@ let $RUST_SRC_PATH="/usr/local/src/rust/src/"
 " let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 " ctrlp
+let g:ctrlp_map = '<Leader>p'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
