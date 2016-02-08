@@ -21,29 +21,29 @@ Plug 'blueshirts/darcula'
 
 " vim-go
 Plug 'fatih/vim-go'
-Plug 'zchee/deoplete-go' " Go autocomplete hook for deoplete
+Plug 'zchee/deoplete-go'           " Go autocomplete hook for deoplete
 Plug 'nsf/gocode', {'rtp': 'vim/'} " Go autocomplete daemon
 
-Plug 'mbbill/undotree' " Show history
+Plug 'mbbill/undotree'             " Show history
 
-Plug 'idanarye/vim-dutyl' " D utils (autocomplete, fmt, etc.)
-Plug 'kiith-sa/DSnips' " D snippets
-Plug 'JesseKPhillips/d.vim' " D highlighting
+Plug 'idanarye/vim-dutyl'          " D utils (autocomplete, fmt, etc.)
+Plug 'kiith-sa/DSnips'             " D snippets
+Plug 'JesseKPhillips/d.vim'        " D highlighting
 
-Plug 'scrooloose/nerdtree' " File tree
+Plug 'scrooloose/nerdtree'         " File tree
 
-Plug 'Shougo/deoplete.nvim' " Async autocomplete for neovim
+Plug 'Shougo/deoplete.nvim'        " Async autocomplete for neovim
 
-Plug 'rust-lang/rust.vim' " Rust highlighting and other stuff
-Plug 'phildawes/racer' " Rust autocomplete
+Plug 'rust-lang/rust.vim'          " Rust highlighting and other stuff
+Plug 'phildawes/racer'             " Rust autocomplete
 
-Plug 'eagletmt/neco-ghc' " Haskell autocomplete
+Plug 'eagletmt/neco-ghc'           " Haskell autocomplete
 
 " Utilities
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'osyo-manga/vim-over' " Substitution preview
-Plug 'scrooloose/nerdcommenter' " Commenting crap
-Plug 'godlygeek/tabular' " Align things at their equal sign
+Plug 'osyo-manga/vim-over'           " Substitution preview
+Plug 'scrooloose/nerdcommenter'      " Commenting crap
+Plug 'godlygeek/tabular'             " Align things at their equal sign
 Plug 'benekastah/neomake'
 
 " Interface
@@ -68,41 +68,41 @@ Plug 'elixir-lang/vim-elixir'
 call plug#end()            " required
 
 " ===== General settings ====
-set autoindent " Indent based off the last line
+set autoindent            " Indent based off the last line
 
-set ruler " Show the line number and column
+set ruler                 " Show the line number and column
 
-set textwidth=250    " Maximum width of text that is being inserted. A longer
-                    " line will be broken after white space to get this width.
+set textwidth=250         " Maximum width of text that is being inserted. A longer
+                          " line will be broken after white space to get this width.
 
 set formatoptions=c,q,r,t " This is a sequence of letters which describes how
-                    " automatic formatting is to be done.
-                    "
-                    " letter    meaning when present in 'formatoptions'
-                    " ------    ---------------------------------------
-                    " c         Auto-wrap comments using textwidth, inserting
-                    "           the current comment leader automatically.
-                    " q         Allow formatting of comments with "gq".
-                    " r         Automatically insert the current comment leader
-                    "           after hitting <Enter> in Insert mode.
-                    " t         Auto-wrap text using textwidth (does not apply
-                    "           to comments)<Paste>
+                          " automatic formatting is to be done.
+                          "
+                          " letter    meaning when present in 'formatoptions'
+                          " ------    ---------------------------------------
+                          " c         Auto-wrap comments using textwidth, inserting
+                          " the current comment leader automatically.
+                          " q         Allow formatting of comments with                  " gq " .
+                          " r         Automatically insert the current comment leader
+                          " after hitting <Enter> in Insert mode.
+                          " t         Auto-wrap text using textwidth (does not apply
+                          " to comments)<Paste>
 
-set showmatch " Jump to matching bracket when one is inserted
+set showmatch             " Jump to matching bracket when one is inserted
 
-set hlsearch    " When there is a previous search pattern highlight all of its
-                " matches
+set hlsearch              " When there is a previous search pattern highlight all of its
+                          " matches
 
-set incsearch   " Show matches while typing
+set incsearch             " Show matches while typing
 
-set ignorecase  " Ignore case when searching
+set ignorecase            " Ignore case when searching
 
-set smartcase   " Override ignorecase if an uppercase char is in the search
+set smartcase             " Override ignorecase if an uppercase char is in the search
 
 " Misc
 set number
 set mouse=a
-set backspace=2 " make backspace work like most other apps
+set backspace=2       " make backspace work like most other apps
 set clipboard=unnamed " make clipboard work
 
 " Use tabs instead of spaces
@@ -159,6 +159,17 @@ nnoremap <Leader>ut :UndotreeToggle<cr>
 map <Leader>ft :NERDTreeToggle<CR>
 
 noremap <Leader>af :Autoformat<CR>
+
+" Move text blocks up and down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+noremap <A-k> :m '<-2<CR>gv=gv
+
+
+" === Utility configuration ===
 
 " Autoclose
 let g:autoclose_vim_commentmode = 1
@@ -219,14 +230,6 @@ let g:syntastic_mode_map = { 'passive_filetypes': ['d'] }
 " ====== Other Vim config ======
 " Automatically highlight symbol under cursor
 autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-
-" Move text blocks up and down
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-noremap <A-k> :m '<-2<CR>gv=gv
 
 if has('gui_running')
   set guifont=Fira\ Code:h11
