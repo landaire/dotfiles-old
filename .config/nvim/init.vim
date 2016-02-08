@@ -75,7 +75,7 @@ call plug#end()            " required
 " General settings
 
 " Map ,e to go out of term mode to normal mode
-tnoremap <Leader>e <C-\><C-n>
+tnoremap <ESC> <C-\><C-n>
 
 set autoindent " Indent based off the last line
 
@@ -120,7 +120,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" Remap leader to comma
+" Remap leader to <SPC>
 let mapleader=' '
 
 " Pathogen
