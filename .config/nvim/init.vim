@@ -8,7 +8,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'MattesGroeger/vim-bookmarks'
 
 Plug 'scrooloose/syntastic'
-
 Plug 'szw/vim-ctrlspace'
 
 Plug 'Chiel92/vim-autoformat'
@@ -50,6 +49,7 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'osyo-manga/vim-over' " Substitution preview
 Plug 'scrooloose/nerdcommenter' " Commenting crap
 Plug 'godlygeek/tabular' " Align things at their equal sign
+Plug 'benekastah/neomake'
 
 " Interface
 Plug 'kien/ctrlp.vim'
@@ -72,11 +72,7 @@ Plug 'elixir-lang/vim-elixir'
 
 call plug#end()            " required
 
-" General settings
-
-" Map ,e to go out of term mode to normal mode
-tnoremap <ESC> <C-\><C-n>
-
+" ===== General settings ====
 set autoindent " Indent based off the last line
 
 set ruler " Show the line number and column
@@ -120,9 +116,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" Remap leader to <SPC>
-let mapleader=' '
-
 " Pathogen
 execute pathogen#infect()
 syntax on
@@ -150,6 +143,17 @@ let g:airline#extensions#tabline#enabled = 1
 
 " ========= Utility Config ===========
 
+" === Key bindings ===
+
+" Remap leader to <SPC>
+let mapleader=' '
+
+" Map ,e to go out of term mode to normal mode
+tnoremap <ESC> <C-\><C-n>
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
 " Tabular config
 if exists(":Tabularize")
     nmap <Leader>a= :Tabularize /=<CR>
@@ -158,27 +162,27 @@ if exists(":Tabularize")
     vmap <Leader>a: :Tabularize /:<CR>
 endif
 
-" Autoclose
-let g:autoclose_vim_commentmode = 1
-
 " Undotree
-nnoremap <F5> :UndotreeToggle<cr>
+nnoremap <Leader>ut :UndotreeToggle<cr>
 
 " Nerdtree
-map <C-n> :NERDTreeToggle<CR>
+map <Leader>ft :NERDTreeToggle<CR>
+
+noremap <Leader>af :Autoformat<CR>
+
+" Autoclose
+let g:autoclose_vim_commentmode = 1
 
 " Rust
 set hidden
 let g:racer_cmd = "/Users/lander/development/racer/target/release/racer"
 let $RUST_SRC_PATH="/usr/local/src/rust/src/"
 
-
 " neco-ghc
 " let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 " ctrlp
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
@@ -186,23 +190,20 @@ let g:ctrlp_custom_ignore = {
 
 " D config
 let g:dutyl_stdImportPaths=['/usr/local/include/d2/']
-
 call dutyl#register#tool('dcd-client','/usr/local/bin/dcd-client')
 call dutyl#register#tool('dcd-server','/usr/local/bin/dcd-server')
 call dutyl#register#tool('dscanner','/Users/lander/development/Dscanner/bin/scanner')
 call dutyl#register#tool('dfmt','/Users/lander/development/dfmt/bin/dfmt --brace_style=otbs')
 call dutyl#register#tool('dub','/usr/local/bin/dub')
 
+" Deoplete
 let g:deoplete#enable_at_startup = 1
 
-noremap <F3> :Autoformat<CR>
-
+" Autoformat configs
 let g:formatdef_dfmt = '"/Users/lander/development/dfmt/bin/dfmt --brace_style=otbs"'
 let g:formatters_d = ['dfmt']
-
 let g:formatdef_rustfmt = '"/Users/lander/development/rust/rustfmg/target/release/rustfmt"'
 let g:formatters_rs = ['rustfmt']
-
 
 " Autochdir
 " set vim to chdir for each file
@@ -215,22 +216,19 @@ endif
 " Go
 let g:go_fmt_command = "/Users/lander/go/bin/goimports"
 
-" map <Leader>n <plug>NERDTreeTabsToggle<CR>
-
-" Automatically highlight symbol under cursor
-autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-
-
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'passive_filetypes': ['d'] }
+
+" ====== Other Vim config ======
+" Automatically highlight symbol under cursor
+autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 " Move text blocks up and down
 nnoremap <A-j> :m .+1<CR>==
@@ -243,7 +241,3 @@ noremap <A-k> :m '<-2<CR>gv=gv
 if has('gui_running')
   set guifont=Fira\ Code:h11
 endif
-
-" Key bindings
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
