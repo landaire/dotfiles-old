@@ -47,10 +47,9 @@ Plug 'eagletmt/neco-ghc'
 
 " Utilities
 Plug 'jeetsukumaran/vim-buffergator'
-" Substitution preview
-Plug 'osyo-manga/vim-over'
-" Commenting crap
-Plug 'scrooloose/nerdcommenter'
+Plug 'osyo-manga/vim-over' " Substitution preview
+Plug 'scrooloose/nerdcommenter' " Commenting crap
+Plug 'godlygeek/tabular' " Align things at their equal sign
 
 " Interface
 Plug 'kien/ctrlp.vim'
@@ -65,6 +64,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'myusuf3/numbers.vim'
 " Distraction-free writing
 Plug 'junegunn/goyo.vim'
 
@@ -121,7 +121,7 @@ set shiftwidth=4
 set expandtab
 
 " Remap leader to comma
-let  mapleader = ','
+let mapleader=' '
 
 " Pathogen
 execute pathogen#infect()
@@ -140,13 +140,23 @@ au FileType gitcommit set tw=72 |  set colorcolumn=50
 set background=dark
 let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-ocean
-let g:base16_shell_path="$HOME/.config/base16-shell"
+let g:BAse16_shell_path="$HOME/.config/base16-shell"
 " colorscheme darcula
 
 " Airline
 let g:airline_theme = "base16_ocean"
 "autocmd vimenter * AirlineTheme 'base16_ocean'
 let g:airline#extensions#tabline#enabled = 1
+
+" ========= Utility Config ===========
+
+" Tabular config
+if exists(":Tabularize")
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:<CR>
+    vmap <Leader>a: :Tabularize /:<CR>
+endif
 
 " Autoclose
 let g:autoclose_vim_commentmode = 1
@@ -156,9 +166,6 @@ nnoremap <F5> :UndotreeToggle<cr>
 
 " Nerdtree
 map <C-n> :NERDTreeToggle<CR>
-"let g:NERDTreeHijackNetrw=0
-":let g:loaded_netrw       = 1
-":let g:loaded_netrwPlugin = 1
 
 " Rust
 set hidden
