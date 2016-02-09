@@ -60,8 +60,8 @@ Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'myusuf3/numbers.vim'
-" Distraction-free writing
-Plug 'junegunn/goyo.vim'
+Plug 'mhinz/vim-startify' " Start screen
+Plug 'junegunn/goyo.vim'  " Distraction-free writing
 
 Plug 'elixir-lang/vim-elixir'
 
@@ -119,9 +119,11 @@ set colorcolumn=80
 au FileType gitcommit set tw=72 |  set colorcolumn=50
 
 " ======== UI Config =========
+" Enable TrueColor support
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " Color scheme
 set background=dark
-let base16colorspace=256  " Access colors present in 256 colorspace
+" let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-ocean
 let g:BAse16_shell_path="$HOME/.config/base16-shell"
 " colorscheme darcula
@@ -170,6 +172,9 @@ noremap <A-k> :m '<-2<CR>gv=gv
 
 
 " === Utility configuration ===
+
+" Enable matchit
+runtime macros/matchit.vim
 
 " Autoclose
 let g:autoclose_vim_commentmode = 1
@@ -227,6 +232,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'passive_filetypes': ['d'] }
+let g:syntastic_html_tidy_exec = '/usr/local/bin/tidy' " Override for HTML5 tidy
+let g:syntastic_html_tidy_blocklevel_tags = ['nav']
 
 " ====== Other Vim config ======
 " Automatically highlight symbol under cursor
