@@ -68,6 +68,7 @@ Plug 'elixir-lang/vim-elixir'
 call plug#end()            " required
 
 " ===== General settings ====
+set termencoding=utf-8
 set autoindent            " Indent based off the last line
 
 set ruler                 " Show the line number and column
@@ -125,18 +126,18 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
 " let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-ocean
-let g:BAse16_shell_path="$HOME/.config/base16-shell"
+let g:base16_shell_path="$HOME/.config/base16-shell"
 " colorscheme darcula
 
 " Airline
+set laststatus=2
+let g:airline_powerline_fonts = 1
 let g:airline_theme = "base16_ocean"
-"autocmd vimenter * AirlineTheme 'base16_ocean'
 let g:airline#extensions#tabline#enabled = 1
 
 " ========= Utility Config ===========
 
 " === Key bindings ===
-
 " Remap leader to <SPC>
 let mapleader=' '
 
