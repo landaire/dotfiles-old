@@ -49,7 +49,7 @@ Plug 'benekastah/neomake'
 " Interface
 Plug 'kien/ctrlp.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
