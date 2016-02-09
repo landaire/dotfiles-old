@@ -43,6 +43,7 @@ antigen bundle sindresorhus/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle skx/sysadmin-util
+antigen bundle tarruda/zsh-autosuggestions
 #antigen bundle tmux
 
 
