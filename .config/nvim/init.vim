@@ -60,8 +60,9 @@ Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'myusuf3/numbers.vim'
-Plug 'mhinz/vim-startify' " Start screen
-Plug 'junegunn/goyo.vim'  " Distraction-free writing
+Plug 'mhinz/vim-startify'  " Start screen
+Plug 'junegunn/goyo.vim'   " Distraction-free writing
+Plug 'Yggdroot/indentLine' " Indent indicators and lines
 
 Plug 'elixir-lang/vim-elixir'
 
@@ -116,12 +117,17 @@ set expandtab
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 set colorcolumn=80
 
-" Show athe colorcolumn when editing a git commit
+" Show the colorcolumn when editing a git commit
 au FileType gitcommit set tw=72 |  set colorcolumn=50
+
+" Enable spellcheck
+setlocal spell spelllang=en_us
 
 " ======== UI Config =========
 " Enable TrueColor support
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" Enable pipe cursor when in insert mode
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 " Color scheme
 set background=dark
 " let base16colorspace=256  " Access colors present in 256 colorspace
@@ -134,6 +140,11 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme = "base16_ocean"
 let g:airline#extensions#tabline#enabled = 1
+
+" Indent indicators
+let g:indentLine_char = '│'
+let g:indentLine_leadingSpaceEnabled=1
+let g:indentLine_leadingSpaceChar='·'
 
 " ========= Utility Config ===========
 
