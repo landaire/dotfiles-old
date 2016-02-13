@@ -45,9 +45,10 @@ Plug 'osyo-manga/vim-over'           " Substitution preview
 Plug 'scrooloose/nerdcommenter'      " Commenting crap
 Plug 'godlygeek/tabular'             " Align things at their equal sign
 Plug 'benekastah/neomake'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
 
 " Interface
-Plug 'kien/ctrlp.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -84,7 +85,7 @@ set formatoptions=c,q,r,t " This is a sequence of letters which describes how
                           " ------    ---------------------------------------
                           " c         Auto-wrap comments using textwidth, inserting
                           " the current comment leader automatically.
-                          " q         Allow formatting of comments with                  " gq " .
+                          " q         Allow formatting of comments with " gq " .
                           " r         Automatically insert the current comment leader
                           " after hitting <Enter> in Insert mode.
                           " t         Auto-wrap text using textwidth (does not apply
@@ -142,8 +143,10 @@ let g:airline_theme = "base16_ocean"
 let g:airline#extensions#tabline#enabled = 1
 
 " Indent indicators
+set list lcs=tab:\│\
 let g:indentLine_char = '│'
 let g:indentLine_leadingSpaceEnabled=1
+let g:indentLine_enabled=1
 let g:indentLine_leadingSpaceChar='·'
 
 " ========= Utility Config ===========
