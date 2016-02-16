@@ -21,23 +21,23 @@ Plug 'blueshirts/darcula'
 
 " vim-go
 Plug 'fatih/vim-go'
-Plug 'zchee/deoplete-go'           " Go autocomplete hook for deoplete
-Plug 'nsf/gocode', {'rtp': 'vim/'} " Go autocomplete daemon
+Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocomplete hook for deoplete
+Plug 'nsf/gocode', {'rtp': 'vim/'}        " Go autocomplete daemon
 
-Plug 'mbbill/undotree'             " Show history
+Plug 'mbbill/undotree'                    " Show history
 
-Plug 'idanarye/vim-dutyl'          " D utils (autocomplete, fmt, etc.)
-Plug 'kiith-sa/DSnips'             " D snippets
-Plug 'JesseKPhillips/d.vim'        " D highlighting
+Plug 'idanarye/vim-dutyl'                 " D utils (autocomplete, fmt, etc.)
+Plug 'kiith-sa/DSnips'                    " D snippets
+Plug 'JesseKPhillips/d.vim'               " D highlighting
 
-Plug 'scrooloose/nerdtree'         " File tree
+Plug 'scrooloose/nerdtree'                " File tree
 
-Plug 'Shougo/deoplete.nvim'        " Async autocomplete for neovim
+Plug 'Shougo/deoplete.nvim'               " Async autocomplete for neovim
 
-Plug 'rust-lang/rust.vim'          " Rust highlighting and other stuff
-Plug 'phildawes/racer'             " Rust autocomplete
+Plug 'rust-lang/rust.vim'                 " Rust highlighting and other stuff
+Plug 'phildawes/racer'                    " Rust autocomplete
 
-Plug 'eagletmt/neco-ghc'           " Haskell autocomplete
+Plug 'eagletmt/neco-ghc'                  " Haskell autocomplete
 
 " Utilities
 Plug 'jeetsukumaran/vim-buffergator'
@@ -45,7 +45,7 @@ Plug 'osyo-manga/vim-over'           " Substitution preview
 Plug 'scrooloose/nerdcommenter'      " Commenting crap
 Plug 'godlygeek/tabular'             " Align things at their equal sign
 Plug 'benekastah/neomake'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-fugitive'
 
 " Interface
@@ -64,12 +64,26 @@ Plug 'myusuf3/numbers.vim'
 Plug 'mhinz/vim-startify'  " Start screen
 Plug 'junegunn/goyo.vim'   " Distraction-free writing
 Plug 'Yggdroot/indentLine' " Indent indicators and lines
+Plug 'vim-scripts/restore_view.vim' " Save/restore views
 
 Plug 'elixir-lang/vim-elixir'
 
 call plug#end()            " required
 
 " ===== General settings ====
+
+" Folding
+set foldenable
+set foldlevelstart=10   " open most folds by default
+set foldnestmax=10      " 10 nested fold max
+" space open/closes folds
+nnoremap <space> za
+set foldmethod=syntax
+
+" Move around "visual" lines instead of actual lines
+nnoremap j gj
+nnoremap k gk
+
 set termencoding=utf-8
 set autoindent            " Indent based off the last line
 
@@ -142,8 +156,11 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = "base16_ocean"
 let g:airline#extensions#tabline#enabled = 1
 
+" View saving
+set viewoptions=cursor,folds,slash,unix
+
 " Indent indicators
-set list lcs=tab:\│\
+set list lcs=tab:\│\ 
 let g:indentLine_char = '│'
 let g:indentLine_leadingSpaceEnabled=1
 let g:indentLine_enabled=1
@@ -152,6 +169,9 @@ let g:indentLine_leadingSpaceChar='·'
 " ========= Utility Config ===========
 
 " === Key bindings ===
+" Disable search highlighting when backspace is pressed
+nmap <silent> <BS>  :nohlsearch<CR>
+
 " Remap leader to <SPC>
 let mapleader=' '
 
@@ -202,13 +222,16 @@ let $RUST_SRC_PATH="/usr/local/src/rust/src/"
 " neco-ghc
 " let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
+" fzf
+nnoremap <C-p> :FZF<CR>
+
 " ctrlp
-let g:ctrlp_map = '<Leader>p'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
+"let g:ctrlp_map = '<Leader>p'
+"set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+"let g:ctrlp_custom_ignore = {
+  "\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  "\ 'file': '\v\.(exe|so|dll)$',
+  "\ }
 
 " D config
 let g:dutyl_stdImportPaths=['/usr/local/include/d2/']
@@ -219,7 +242,22 @@ call dutyl#register#tool('dfmt','/Users/lander/development/dfmt/bin/dfmt --brace
 call dutyl#register#tool('dub','/usr/local/bin/dub')
 
 " Deoplete
+" neocomplete like
+" https://github.com/Shougo/deoplete.nvim/blob/master/doc/deoplete.txt
+set completeopt+=noinsert
+
+" Set before than deoplete
+" deoplete#mappings#_set_completeopt() in
+" https://github.com/Shougo/deoplete.nvim/blob/master/autoload/deoplete/mappings.vim
+" https://github.com/Shougo/deoplete.nvim/blob/master/rplugin/python3/deoplete/deoplete.py
+set completeopt+=noselect
+
+" Path to python interpreter for neovim
+let g:python3_host_prog  = '/usr/local/opt/python3/bin/python3'
+" Skip the check of neovim module
+let g:python3_host_skip_check = 1
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
 
 " Autoformat configs
 let g:formatdef_dfmt = '"/Users/lander/development/dfmt/bin/dfmt --brace_style=otbs"'
