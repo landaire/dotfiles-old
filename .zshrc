@@ -30,7 +30,7 @@ setopt NO_HIST_BEEP
 setopt SHARE_HISTORY
 
 bindkey -e
-bindkey '^R' history-incremental-search-backward
+#bindkey '^[R' history-incremental-search-backward
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
@@ -81,3 +81,5 @@ man() {
     man "$@"
 }
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
