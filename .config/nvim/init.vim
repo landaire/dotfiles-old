@@ -21,8 +21,13 @@ Plug 'blueshirts/darcula'
 
 " vim-go
 Plug 'fatih/vim-go'
-Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocomplete hook for deoplete
 Plug 'nsf/gocode', {'rtp': 'vim/'}        " Go autocomplete daemon
+Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocomplete hook for deoplete
+
+Plug 'landaire/deoplete-d'                " D autocompletion
+
+Plug 'Shougo/echodoc.vim'                 " Show messages in echo area
+Plug 'Shougo/deoplete.nvim'               " Async autocomplete for neovim
 
 Plug 'mbbill/undotree'                    " Show history
 
@@ -32,12 +37,12 @@ Plug 'JesseKPhillips/d.vim'               " D highlighting
 
 Plug 'scrooloose/nerdtree'                " File tree
 
-Plug 'Shougo/deoplete.nvim'               " Async autocomplete for neovim
-
 Plug 'rust-lang/rust.vim'                 " Rust highlighting and other stuff
 Plug 'phildawes/racer'                    " Rust autocomplete
 
 Plug 'eagletmt/neco-ghc'                  " Haskell autocomplete
+
+Plug 'plasticboy/vim-markdown'            " Markdown mode
 
 " Utilities
 Plug 'jeetsukumaran/vim-buffergator'
@@ -47,6 +52,8 @@ Plug 'godlygeek/tabular'             " Align things at their equal sign
 Plug 'benekastah/neomake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-fugitive'
+Plug 'xolox/vim-misc'     " Required for easytags
+Plug 'xolox/vim-easytags' " ctags integration
 
 " Interface
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -65,6 +72,7 @@ Plug 'mhinz/vim-startify'  " Start screen
 Plug 'junegunn/goyo.vim'   " Distraction-free writing
 Plug 'Yggdroot/indentLine' " Indent indicators and lines
 Plug 'vim-scripts/restore_view.vim' " Save/restore views
+Plug 'roman/golden-ratio' " Golden ratio for windows
 
 Plug 'elixir-lang/vim-elixir'
 
@@ -74,7 +82,7 @@ call plug#end()            " required
 
 " Folding
 set foldenable
-set foldlevelstart=10   " open most folds by default
+set foldlevelstart=20   " open most folds by default
 set foldnestmax=10      " 10 nested fold max
 " space open/closes folds
 nnoremap <space> za
@@ -83,6 +91,8 @@ set foldmethod=syntax
 " Move around "visual" lines instead of actual lines
 nnoremap j gj
 nnoremap k gk
+
+set hidden " Allow having multiple dirty buffers
 
 set termencoding=utf-8
 set autoindent            " Indent based off the last line
@@ -124,11 +134,11 @@ set clipboard=unnamed " make clipboard work
 
 " Use tabs instead of spaces
 filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
-" Show the 80-char color column in all files
+" Show the X-char color column in all files
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 set colorcolumn=80
 
@@ -195,6 +205,41 @@ nnoremap <Leader>ut :UndotreeToggle<cr>
 " Nerdtree
 map <Leader>ft :NERDTreeToggle<CR>
 
+" Tagbar
+let g:tagbar_type_d = {
+            \ 'ctagstype' : 'd',
+            \ 'kinds'     : [
+                \ 'c:classes:1:1',
+                \ 'f:functions:1:1',
+                \ 'T:template:1:1',
+                \ 'g:enums:1:1',
+                \ 'e:enumerators:0:0',
+                \ 'u:unions:1:1',
+                \ 's:structs:1:1',
+                \ 'v:variables:1:0',
+                \ 'i:interfaces:1:1',
+                \ 'm:members',
+                \ 'a:alias'
+            \ ],
+            \'sro': '.',
+                \ 'kind2scope' : {
+                \ 'c' : 'class',
+                \ 'g' : 'enum',
+                \ 's' : 'struct',
+                \ 'u' : 'union',
+                \ 'T' : 'template'
+            \},
+            \ 'scope2kind' : {
+                \ 'enum'      : 'g',
+                \ 'class'     : 'c',
+                \ 'struct'    : 's',
+                \ 'union'     : 'u',
+                \ 'template'  : 'T'
+            \ },
+            \ 'ctagsbin' : 'dscanner',
+            \ 'ctagsargs' : ['--ctags']
+            \ }
+
 noremap <Leader>af :Autoformat<CR>
 
 " Move text blocks up and down
@@ -215,7 +260,6 @@ runtime macros/matchit.vim
 let g:autoclose_vim_commentmode = 1
 
 " Rust
-set hidden
 let g:racer_cmd = "/Users/lander/development/racer/target/release/racer"
 let $RUST_SRC_PATH="/usr/local/src/rust/src/"
 
@@ -234,12 +278,16 @@ nnoremap <C-p> :FZF<CR>
   "\ }
 
 " D config
-let g:dutyl_stdImportPaths=['/usr/local/include/d2/']
+let g:dutyl_stdImportPaths=['/usr/local/include/dlang/dmd']
 call dutyl#register#tool('dcd-client','/usr/local/bin/dcd-client')
 call dutyl#register#tool('dcd-server','/usr/local/bin/dcd-server')
-call dutyl#register#tool('dscanner','/Users/lander/development/Dscanner/bin/scanner')
+call dutyl#register#tool('dscanner','/Users/lander/bin/dscanner')
 call dutyl#register#tool('dfmt','/Users/lander/development/dfmt/bin/dfmt --brace_style=otbs')
 call dutyl#register#tool('dub','/usr/local/bin/dub')
+
+" Echodoc
+set noshowmode
+let g:echodoc_enable_at_startup=1
 
 " Deoplete
 " neocomplete like
@@ -251,6 +299,8 @@ set completeopt+=noinsert
 " https://github.com/Shougo/deoplete.nvim/blob/master/autoload/deoplete/mappings.vim
 " https://github.com/Shougo/deoplete.nvim/blob/master/rplugin/python3/deoplete/deoplete.py
 set completeopt+=noselect
+
+set completeopt-=preview
 
 " Path to python interpreter for neovim
 let g:python3_host_prog  = '/usr/local/opt/python3/bin/python3'
