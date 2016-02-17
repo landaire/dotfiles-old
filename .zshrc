@@ -44,7 +44,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle skx/sysadmin-util
 antigen bundle tarruda/zsh-autosuggestions
-#antigen bundle tmux
+antigen bundle tmux
 
 
 antigen apply
@@ -69,6 +69,7 @@ bindkey '[H' kill-word
 # Delete line with cmd-backspace
 bindkey '[I' kill-whole-line
 
+# Make man colorful
 man() {
     env \
     LESS_TERMCAP_mb=$(printf "\e[1;31m") \
