@@ -1,5 +1,5 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible							" be iMproved, required
+filetype off									" required
 
 autocmd filetype crontab setlocal nobackup nowritebackup
 
@@ -21,44 +21,44 @@ Plug 'blueshirts/darcula'
 
 " vim-go
 Plug 'fatih/vim-go'
-Plug 'nsf/gocode', {'rtp': 'vim/'}        " Go autocomplete daemon
+Plug 'nsf/gocode', {'rtp': 'vim/'}				" Go autocomplete daemon
 Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocomplete hook for deoplete
 
-Plug 'zchee/deoplete-jedi'                " Python autocompletion
+Plug 'zchee/deoplete-jedi'								" Python autocompletion
 
-Plug 'landaire/deoplete-d'                " D autocompletion
+Plug 'landaire/deoplete-d'								" D autocompletion
 
-Plug 'zchee/deoplete-clang'               " C/C++ autocompletion
+Plug 'zchee/deoplete-clang'								" C/C++ autocompletion
 
-Plug 'Shougo/echodoc.vim'                 " Show messages in echo area
-Plug 'Shougo/deoplete.nvim'               " Async autocomplete for neovim
+Plug 'Shougo/echodoc.vim'									" Show messages in echo area
+Plug 'Shougo/deoplete.nvim'								" Async autocomplete for neovim
 
-Plug 'mbbill/undotree'                    " Show history
+Plug 'mbbill/undotree'										" Show history
 
-Plug 'idanarye/vim-dutyl'                 " D utils (autocomplete, fmt, etc.)
-Plug 'kiith-sa/DSnips'                    " D snippets
-Plug 'JesseKPhillips/d.vim'               " D highlighting
+Plug 'idanarye/vim-dutyl'									" D utils (autocomplete, fmt, etc.)
+Plug 'kiith-sa/DSnips'										" D snippets
+Plug 'JesseKPhillips/d.vim'								" D highlighting
 
-Plug 'scrooloose/nerdtree'                " File tree
+Plug 'scrooloose/nerdtree'								" File tree
 
-Plug 'rust-lang/rust.vim'                 " Rust highlighting and other stuff
-Plug 'phildawes/racer'                    " Rust autocomplete
+Plug 'rust-lang/rust.vim'									" Rust highlighting and other stuff
+Plug 'phildawes/racer'										" Rust autocomplete
 
-Plug 'eagletmt/neco-ghc'                  " Haskell autocomplete
+Plug 'eagletmt/neco-ghc'									" Haskell autocomplete
 
-Plug 'plasticboy/vim-markdown'            " Markdown mode
+Plug 'plasticboy/vim-markdown'						" Markdown mode
 
 " Utilities
-Plug 'osyo-manga/vim-over'           " Substitution preview
-Plug 'scrooloose/nerdcommenter'      " Commenting crap
-Plug 'godlygeek/tabular'             " Align things at their equal sign
+Plug 'osyo-manga/vim-over'					 " Substitution preview
+Plug 'scrooloose/nerdcommenter'			 " Commenting crap
+Plug 'godlygeek/tabular'						 " Align things at their equal sign
 Plug 'benekastah/neomake'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-fugitive'
-Plug 'xolox/vim-misc'     " Required for easytags
+Plug 'xolox/vim-misc'			" Required for easytags
 Plug 'xolox/vim-easytags' " ctags integration
 Plug 'easymotion/vim-easymotion'
 Plug 'ap/vim-css-color'
@@ -77,14 +77,14 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'myusuf3/numbers.vim'
 Plug 'mhinz/vim-startify'  " Start screen
-Plug 'junegunn/goyo.vim'   " Distraction-free writing
+Plug 'junegunn/goyo.vim'	 " Distraction-free writing
 Plug 'Yggdroot/indentLine' " Indent indicators and lines
 Plug 'vim-scripts/restore_view.vim' " Save/restore views
 Plug 'roman/golden-ratio' " Golden ratio for windows
 
 Plug 'elixir-lang/vim-elixir'
 
-call plug#end()            " required
+call plug#end()						 " required
 
 " ===== General settings ====
 
@@ -92,8 +92,8 @@ set conceallevel=1
 
 " Folding
 set foldenable
-set foldlevelstart=20   " open most folds by default
-set foldnestmax=10      " 10 nested fold max
+set foldlevelstart=20		" open most folds by default
+set foldnestmax=10			" 10 nested fold max
 " space open/closes folds
 nnoremap <space> za
 set foldmethod=syntax
@@ -105,41 +105,41 @@ nnoremap k gk
 set hidden " Allow having multiple dirty buffers
 
 set termencoding=utf-8
-set autoindent            " Indent based off the last line
+set autoindent						" Indent based off the last line
 
-set ruler                 " Show the line number and column
+set ruler									" Show the line number and column
 
-set textwidth=250         " Maximum width of text that is being inserted. A longer
-                          " line will be broken after white space to get this width.
+set textwidth=250					" Maximum width of text that is being inserted. A longer
+													" line will be broken after white space to get this width.
 
 set formatoptions=c,q,r,t " This is a sequence of letters which describes how
-                          " automatic formatting is to be done.
-                          "
-                          " letter    meaning when present in 'formatoptions'
-                          " ------    ---------------------------------------
-                          " c         Auto-wrap comments using textwidth, inserting
-                          " the current comment leader automatically.
-                          " q         Allow formatting of comments with " gq " .
-                          " r         Automatically insert the current comment leader
-                          " after hitting <Enter> in Insert mode.
-                          " t         Auto-wrap text using textwidth (does not apply
-                          " to comments)<Paste>
+													" automatic formatting is to be done.
+													"
+													" letter		meaning when present in 'formatoptions'
+													" ------		---------------------------------------
+													" c					Auto-wrap comments using textwidth, inserting
+													" the current comment leader automatically.
+													" q					Allow formatting of comments with " gq " .
+													" r					Automatically insert the current comment leader
+													" after hitting <Enter> in Insert mode.
+													" t					Auto-wrap text using textwidth (does not apply
+													" to comments)<Paste>
 
-set showmatch             " Jump to matching bracket when one is inserted
+set showmatch							" Jump to matching bracket when one is inserted
 
-set hlsearch              " When there is a previous search pattern highlight all of its
-                          " matches
+set hlsearch							" When there is a previous search pattern highlight all of its
+													" matches
 
-set incsearch             " Show matches while typing
+set incsearch							" Show matches while typing
 
-set ignorecase            " Ignore case when searching
+set ignorecase						" Ignore case when searching
 
-set smartcase             " Override ignorecase if an uppercase char is in the search
+set smartcase							" Override ignorecase if an uppercase char is in the search
 
 " Misc
 set number
 set mouse=a
-set backspace=2       " make backspace work like most other apps
+set backspace=2				" make backspace work like most other apps
 set clipboard=unnamed " make clipboard work
 
 " Tab config
@@ -165,7 +165,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 " Color scheme
 set background=dark
-" let base16colorspace=256  " Access colors present in 256 colorspace
+" let base16colorspace=256	" Access colors present in 256 colorspace
 colorscheme base16-ocean
 let g:base16_shell_path="$HOME/.config/base16-shell"
 " colorscheme darcula
@@ -190,7 +190,7 @@ let g:indentLine_leadingSpaceChar='·'
 
 " === Key bindings ===
 " Disable search highlighting when backspace is pressed
-nmap <silent> <BS>  :nohlsearch<CR>
+nmap <silent> <BS>	:nohlsearch<CR>
 
 " Remap leader to <SPC>
 let mapleader=' '
@@ -203,10 +203,10 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " Tabular config
 if exists(":Tabularize")
-    nmap <Leader>a= :Tabularize /=<CR>
-    vmap <Leader>a= :Tabularize /=<CR>
-    nmap <Leader>a: :Tabularize /:<CR>
-    vmap <Leader>a: :Tabularize /:<CR>
+		nmap <Leader>a= :Tabularize /=<CR>
+		vmap <Leader>a= :Tabularize /=<CR>
+		nmap <Leader>a: :Tabularize /:<CR>
+		vmap <Leader>a: :Tabularize /:<CR>
 endif
 
 " Undotree
@@ -217,40 +217,40 @@ map <Leader>ft :NERDTreeToggle<CR>
 
 " Tagbar
 let g:tagbar_type_d = {
-            \ 'ctagstype' : 'd',
-            \ 'kinds'     : [
-                \ 'c:classes:1:1',
-                \ 'f:functions:1:1',
-                \ 'T:template:1:1',
-                \ 'g:enums:1:1',
-                \ 'e:enumerators:0:0',
-                \ 'u:unions:1:1',
-                \ 's:structs:1:1',
-                \ 'v:variables:1:0',
-                \ 'i:interfaces:1:1',
-                \ 'm:members',
-                \ 'a:alias'
-            \ ],
-            \'sro': '.',
-                \ 'kind2scope' : {
-                \ 'c' : 'class',
-                \ 'g' : 'enum',
-                \ 's' : 'struct',
-                \ 'u' : 'union',
-                \ 'T' : 'template'
-            \},
-            \ 'scope2kind' : {
-                \ 'enum'      : 'g',
-                \ 'class'     : 'c',
-                \ 'struct'    : 's',
-                \ 'union'     : 'u',
-                \ 'template'  : 'T'
-            \ },
-            \ 'ctagsbin' : 'dscanner',
-            \ 'ctagsargs' : ['--ctags']
-            \ }
+						\ 'ctagstype' : 'd',
+						\ 'kinds'			: [
+								\ 'c:classes:1:1',
+								\ 'f:functions:1:1',
+								\ 'T:template:1:1',
+								\ 'g:enums:1:1',
+								\ 'e:enumerators:0:0',
+								\ 'u:unions:1:1',
+								\ 's:structs:1:1',
+								\ 'v:variables:1:0',
+								\ 'i:interfaces:1:1',
+								\ 'm:members',
+								\ 'a:alias'
+						\ ],
+						\'sro': '.',
+								\ 'kind2scope' : {
+								\ 'c' : 'class',
+								\ 'g' : 'enum',
+								\ 's' : 'struct',
+								\ 'u' : 'union',
+								\ 'T' : 'template'
+						\},
+						\ 'scope2kind' : {
+								\ 'enum'			: 'g',
+								\ 'class'			: 'c',
+								\ 'struct'		: 's',
+								\ 'union'			: 'u',
+								\ 'template'	: 'T'
+						\ },
+						\ 'ctagsbin' : 'dscanner',
+						\ 'ctagsargs' : ['--ctags']
+						\ }
 autocmd FileType * nested :call tagbar#autoopen(0) " Auto-open tagbar when
-                                                   " opening a supported filetype
+																									 " opening a supported filetype
 
 noremap <Leader>af :Autoformat<CR>
 
@@ -288,11 +288,11 @@ nnoremap <silent> <leader>bc :BCommits<CR>
 
 " ctrlp
 "let g:ctrlp_map = '<Leader>p'
-"set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+"set wildignore+=*/tmp/*,*.so,*.swp,*.zip			" MacOSX/Linux
 "let g:ctrlp_custom_ignore = {
-  "\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  "\ 'file': '\v\.(exe|so|dll)$',
-  "\ }
+	"\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+	"\ 'file': '\v\.(exe|so|dll)$',
+	"\ }
 
 " D config
 let g:dutyl_stdImportPaths=['/usr/local/include/dlang/dmd']
@@ -339,9 +339,9 @@ let g:formatters_rs = ['rustfmt']
 " Autochdir
 " set vim to chdir for each file
 if exists('+autochdir')
-    set autochdir
+		set autochdir
 else
-    autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+		autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
 endif
 
 " Go
@@ -364,5 +364,5 @@ let g:syntastic_html_tidy_blocklevel_tags = ['nav']
 autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 if has('gui_running')
-  set guifont=Fira\ Code:h11
+	set guifont=Fira\ Code:h11
 endif
