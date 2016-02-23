@@ -24,7 +24,11 @@ Plug 'fatih/vim-go'
 Plug 'nsf/gocode', {'rtp': 'vim/'}        " Go autocomplete daemon
 Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocomplete hook for deoplete
 
+Plug 'zchee/deoplete-jedi'                " Python autocompletion
+
 Plug 'landaire/deoplete-d'                " D autocompletion
+
+Plug 'zchee/deoplete-clang'               " C/C++ autocompletion
 
 Plug 'Shougo/echodoc.vim'                 " Show messages in echo area
 Plug 'Shougo/deoplete.nvim'               " Async autocomplete for neovim
@@ -45,15 +49,19 @@ Plug 'eagletmt/neco-ghc'                  " Haskell autocomplete
 Plug 'plasticboy/vim-markdown'            " Markdown mode
 
 " Utilities
-Plug 'jeetsukumaran/vim-buffergator'
 Plug 'osyo-manga/vim-over'           " Substitution preview
 Plug 'scrooloose/nerdcommenter'      " Commenting crap
 Plug 'godlygeek/tabular'             " Align things at their equal sign
 Plug 'benekastah/neomake'
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
 Plug 'tpope/vim-fugitive'
 Plug 'xolox/vim-misc'     " Required for easytags
 Plug 'xolox/vim-easytags' " ctags integration
+Plug 'easymotion/vim-easymotion'
+Plug 'ap/vim-css-color'
 
 " Interface
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -79,6 +87,8 @@ Plug 'elixir-lang/vim-elixir'
 call plug#end()            " required
 
 " ===== General settings ====
+
+set conceallevel=1
 
 " Folding
 set foldenable
@@ -132,11 +142,11 @@ set mouse=a
 set backspace=2       " make backspace work like most other apps
 set clipboard=unnamed " make clipboard work
 
-" Use tabs instead of spaces
+" Tab config
 filetype plugin indent on
 set tabstop=2
 set shiftwidth=2
-set expandtab
+"set expandtab
 
 " Show the X-char color column in all files
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
@@ -239,6 +249,8 @@ let g:tagbar_type_d = {
             \ 'ctagsbin' : 'dscanner',
             \ 'ctagsargs' : ['--ctags']
             \ }
+autocmd FileType * nested :call tagbar#autoopen(0) " Auto-open tagbar when
+                                                   " opening a supported filetype
 
 noremap <Leader>af :Autoformat<CR>
 
@@ -267,7 +279,12 @@ let $RUST_SRC_PATH="/usr/local/src/rust/src/"
 " let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 " fzf
-nnoremap <C-p> :FZF<CR>
+nnoremap <silent> <leader>p :FZF<CR>
+nnoremap <silent> <leader>m :History<CR>
+nnoremap <silent> <leader>t :Tags<CR>
+nnoremap <silent> <leader>l :Lines<CR>
+nnoremap <silent> <leader>pc :Commits<CR>
+nnoremap <silent> <leader>bc :BCommits<CR>
 
 " ctrlp
 "let g:ctrlp_map = '<Leader>p'
@@ -309,6 +326,10 @@ let g:python3_host_skip_check = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
+" Deoplete-clang
+let g:deoplete#sources#clang#clang_header = '/usr/local/include/clang/'
+let g:deoplete#sources#clang#libclang_path = '/usr/local/lib/libclang.dylib'
+
 " Autoformat configs
 let g:formatdef_dfmt = '"/Users/lander/development/dfmt/bin/dfmt --brace_style=otbs"'
 let g:formatters_d = ['dfmt']
@@ -335,7 +356,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'passive_filetypes': ['d'] }
-let g:syntastic_html_tidy_exec = '/usr/local/bin/tidy' " Override for HTML5 tidy
+let g:syntastic_html_tidy_exec = '/usr/local/bin/tidy -config ~/.config/tidy/tidy.conf' " Override for HTML5 tidy
 let g:syntastic_html_tidy_blocklevel_tags = ['nav']
 
 " ====== Other Vim config ======
