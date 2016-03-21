@@ -8,10 +8,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'MattesGroeger/vim-bookmarks'
 
 " Syntax checker
-Plug 'scrooloose/syntastic'
+Plug 'benekastah/neomake'
 
 " Buffer, tab, file management/fuzzy searching
-Plug 'szw/vim-ctrlspace'
+" Plug 'szw/vim-ctrlspace'
 
 Plug 'Chiel92/vim-autoformat'
 
@@ -19,40 +19,56 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'chriskempson/base16-vim'
 Plug 'blueshirts/darcula'
 
+Plug 'keith/swift.vim'
+
 " vim-go
 Plug 'fatih/vim-go'
 Plug 'nsf/gocode', {'rtp': 'vim/'}				" Go autocomplete daemon
 Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocomplete hook for deoplete
 
+" HTML
+Plug 'othree/html5.vim'
+
 Plug 'zchee/deoplete-jedi'								" Python autocompletion
 
 Plug 'landaire/deoplete-d'								" D autocompletion
 
-Plug 'zchee/deoplete-clang'								" C/C++ autocompletion
+Plug 'landaire/deoplete-swift'
 
-Plug 'Shougo/echodoc.vim'									" Show messages in echo area
-Plug 'Shougo/deoplete.nvim'								" Async autocomplete for neovim
+"Plug 'zchee/deoplete-clang'								" C/C++ autocompletion
 
-Plug 'mbbill/undotree'										" Show history
+Plug 'Shougo/echodoc.vim'      " Show messages in echo area
+Plug 'Shougo/deoplete.nvim'    " Async autocomplete for neovim
 
-Plug 'idanarye/vim-dutyl'									" D utils (autocomplete, fmt, etc.)
-Plug 'kiith-sa/DSnips'										" D snippets
-Plug 'JesseKPhillips/d.vim'								" D highlighting
+Plug 'mbbill/undotree'         " Show history
 
-Plug 'scrooloose/nerdtree'								" File tree
+Plug 'idanarye/vim-dutyl'      " D utils (autocomplete, fmt, etc.)
+Plug 'kiith-sa/DSnips'         " D snippets
+Plug 'JesseKPhillips/d.vim'    " D highlighting
 
-Plug 'rust-lang/rust.vim'									" Rust highlighting and other stuff
-Plug 'phildawes/racer'										" Rust autocomplete
+Plug 'scrooloose/nerdtree'     " File tree
 
-Plug 'eagletmt/neco-ghc'									" Haskell autocomplete
+Plug 'rust-lang/rust.vim'      " Rust highlighting and other stuff
+Plug 'phildawes/racer'         " Rust autocomplete
 
-Plug 'plasticboy/vim-markdown'						" Markdown mode
+Plug 'eagletmt/neco-ghc'       " Haskell autocomplete
+
+Plug 'plasticboy/vim-markdown' " Markdown mode
+
+Plug 'fidian/hexmode'          " Binary files
 
 " Utilities
-Plug 'osyo-manga/vim-over'					 " Substitution preview
-Plug 'scrooloose/nerdcommenter'			 " Commenting crap
-Plug 'godlygeek/tabular'						 " Align things at their equal sign
-Plug 'benekastah/neomake'
+Plug 'osyo-manga/vim-over'      " Substitution preview
+Plug 'scrooloose/nerdcommenter' " Commenting crap
+Plug 'godlygeek/tabular'        " Align things at their equal sign
+Plug 'jceb/vim-orgmode'         " Orgmode
+Plug 'vim-scripts/utl.vim'      " Universal text linking
+Plug 'vim-scripts/repeat.vim'   " Repeat actions
+Plug 'chrisbra/NrrwRgn'         " Narrow regions
+Plug 'tpope/vim-speeddating'    " Increment/decrement dates
+Plug 'mattn/calendar-vim'       " Calendar window
+Plug 'vim-scripts/SyntaxRange'  " Change the syntax for a range
+Plug 'Konfekt/FastFold'         " Speeds up folding
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -79,8 +95,8 @@ Plug 'myusuf3/numbers.vim'
 Plug 'mhinz/vim-startify'  " Start screen
 Plug 'junegunn/goyo.vim'	 " Distraction-free writing
 Plug 'Yggdroot/indentLine' " Indent indicators and lines
-Plug 'vim-scripts/restore_view.vim' " Save/restore views
-Plug 'roman/golden-ratio' " Golden ratio for windows
+"Plug 'vim-scripts/restore_view.vim' " Save/restore views
+" Plug 'roman/golden-ratio' " Golden ratio for windows
 
 Plug 'elixir-lang/vim-elixir'
 
@@ -88,14 +104,15 @@ call plug#end()						 " required
 
 " ===== General settings ====
 
-set conceallevel=1
+set conceallevel=0
 
 " Folding
 set foldenable
 set foldlevelstart=20		" open most folds by default
 set foldnestmax=10			" 10 nested fold max
-" space open/closes folds
-nnoremap <space> za
+
+" comma open/closes folds
+nnoremap , za
 set foldmethod=syntax
 
 " Move around "visual" lines instead of actual lines
@@ -175,6 +192,10 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme = "base16_ocean"
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_left_alt_sep=''
+let g:airline_right_alt_sep=''
 
 " View saving
 set viewoptions=cursor,folds,slash,unix
@@ -189,6 +210,9 @@ let g:indentLine_leadingSpaceChar='·'
 " ========= Utility Config ===========
 
 " === Key bindings ===
+" Press shift-enter to add a new line without moving cursor
+inoremap <silent> <s-cr> <esc>m`o<esc>``a
+
 " Disable search highlighting when backspace is pressed
 nmap <silent> <BS>	:nohlsearch<CR>
 
@@ -249,8 +273,6 @@ let g:tagbar_type_d = {
 						\ 'ctagsbin' : 'dscanner',
 						\ 'ctagsargs' : ['--ctags']
 						\ }
-autocmd FileType * nested :call tagbar#autoopen(0) " Auto-open tagbar when
-																									 " opening a supported filetype
 
 noremap <Leader>af :Autoformat<CR>
 
@@ -271,6 +293,9 @@ runtime macros/matchit.vim
 " Autoclose
 let g:autoclose_vim_commentmode = 1
 
+" Orgmode
+let g:org_export_emacs="~/bin/emacs"
+
 " Rust
 let g:racer_cmd = "/Users/lander/development/racer/target/release/racer"
 let $RUST_SRC_PATH="/usr/local/src/rust/src/"
@@ -280,6 +305,7 @@ let $RUST_SRC_PATH="/usr/local/src/rust/src/"
 
 " fzf
 nnoremap <silent> <leader>p :FZF<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>m :History<CR>
 nnoremap <silent> <leader>t :Tags<CR>
 nnoremap <silent> <leader>l :Lines<CR>
@@ -338,26 +364,26 @@ let g:formatters_rs = ['rustfmt']
 
 " Autochdir
 " set vim to chdir for each file
-if exists('+autochdir')
-		set autochdir
-else
-		autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
-endif
+"if exists('+autochdir')
+		"set autochdir
+"else
+		"autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+"endif
 
 " Go
 let g:go_fmt_command = "/Users/lander/go/bin/goimports"
 
-" Syntastic
+" Neomake
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = { 'passive_filetypes': ['d'] }
-let g:syntastic_html_tidy_exec = '/usr/local/bin/tidy -config ~/.config/tidy/tidy.conf' " Override for HTML5 tidy
-let g:syntastic_html_tidy_blocklevel_tags = ['nav']
+let g:neomake_always_populate_loc_list = 1
+let g:neomake_auto_loc_list = 0
+let g:neomake_check_on_open = 1
+" autocmd! BufWritePost * Neomake
+let g:neomake_check_on_wq = 0
+let g:neomake_mode_map = { 'passive_filetypes': ['d'] }
+let g:neomake_html_tidy_exec = '/usr/local/bin/tidy -config ~/.config/tidy/tidy.conf' " Override for HTML5 tidy
+let g:neomake_html_tidy_blocklevel_tags = ['nav']
 
 " ====== Other Vim config ======
 " Automatically highlight symbol under cursor
