@@ -28,13 +28,18 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_SPACE
 setopt NO_HIST_BEEP
 setopt SHARE_HISTORY
+setopt HIST_REDUCE_BLANKS
+setopt CORRECT
+
+autoload -U colors && colors
+export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
 
 bindkey -e
 #bindkey '^[R' history-incremental-search-backward
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOSTART=false
 ZSH_TMUX_AUTOCONNECT=false
 PURE_PROMPT_SYMBOL=\$
 
