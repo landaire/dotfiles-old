@@ -61,7 +61,9 @@ Plug 'fidian/hexmode'          " Binary files
 Plug 'osyo-manga/vim-over'      " Substitution preview
 Plug 'scrooloose/nerdcommenter' " Commenting crap
 Plug 'godlygeek/tabular'        " Align things at their equal sign
+Plug 'vim-scripts/Smart-Tabs'   " Smart tabs
 Plug 'jceb/vim-orgmode'         " Orgmode
+Plug 'vimwiki/vimwiki'          " Wiki
 Plug 'vim-scripts/utl.vim'      " Universal text linking
 Plug 'vim-scripts/repeat.vim'   " Repeat actions
 Plug 'chrisbra/NrrwRgn'         " Narrow regions
@@ -69,6 +71,8 @@ Plug 'tpope/vim-speeddating'    " Increment/decrement dates
 Plug 'mattn/calendar-vim'       " Calendar window
 Plug 'vim-scripts/SyntaxRange'  " Change the syntax for a range
 Plug 'Konfekt/FastFold'         " Speeds up folding
+Plug 'editorconfig/editorconfig-vim' " Editorconfig support
+
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -85,6 +89,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 Plug 'majutsushi/tagbar'
 Plug 'spf13/vim-autoclose'
 Plug 'terryma/vim-multiple-cursors'
@@ -95,7 +101,7 @@ Plug 'myusuf3/numbers.vim'
 Plug 'mhinz/vim-startify'  " Start screen
 Plug 'junegunn/goyo.vim'	 " Distraction-free writing
 Plug 'Yggdroot/indentLine' " Indent indicators and lines
-"Plug 'vim-scripts/restore_view.vim' " Save/restore views
+Plug 'vim-scripts/restore_view.vim' " Save/restore views
 " Plug 'roman/golden-ratio' " Golden ratio for windows
 
 Plug 'elixir-lang/vim-elixir'
@@ -103,16 +109,15 @@ Plug 'elixir-lang/vim-elixir'
 call plug#end()						 " required
 
 " ===== General settings ====
-
-set conceallevel=0
+set conceallevel=2
 
 " Folding
 set foldenable
 set foldlevelstart=20		" open most folds by default
 set foldnestmax=10			" 10 nested fold max
 
-" comma open/closes folds
-nnoremap , za
+" f open/closes folds
+nnoremap f za
 set foldmethod=syntax
 
 " Move around "visual" lines instead of actual lines
@@ -156,7 +161,8 @@ set smartcase							" Override ignorecase if an uppercase char is in the search
 " Misc
 set number
 set mouse=a
-set backspace=2				" make backspace work like most other apps
+" set backspace=2				" make backspace work like most other apps
+set backspace=indent,eol,start
 set clipboard=unnamed " make clipboard work
 
 " Tab config
@@ -180,6 +186,24 @@ setlocal spell spelllang=en_us
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " Enable pipe cursor when in insert mode
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+let g:terminal_color_0  = '#2b303b'
+let g:terminal_color_1  = '#bf616a'
+let g:terminal_color_2  = '#a3be8c'
+let g:terminal_color_3  = '#ebcb8b'
+let g:terminal_color_4  = '#8fa1b3'
+let g:terminal_color_5  = '#b48ead'
+let g:terminal_color_6  = '#96b5b4'
+let g:terminal_color_7  = '#c0c5ce'
+let g:terminal_color_8  = '#65737e'
+let g:terminal_color_9  = '#2b303b'
+let g:terminal_color_10 = '#bf616a'
+let g:terminal_color_11 = '#a3be8c'
+let g:terminal_color_12 = '#ebcb8b'
+let g:terminal_color_13 = '#8fa1b3'
+let g:terminal_color_14 = '#b48ead'
+let g:terminal_color_15 = '#eff1f5'
+
 " Color scheme
 set background=dark
 " let base16colorspace=256	" Access colors present in 256 colorspace
@@ -237,7 +261,8 @@ endif
 nnoremap <Leader>ut :UndotreeToggle<cr>
 
 " Nerdtree
-map <Leader>ft :NERDTreeToggle<CR>
+"map <Leader>ft :NERDTreeToggle<CR>
+map <Leader>ft :call OpenRanger()<CR>
 
 " Tagbar
 let g:tagbar_type_d = {
@@ -295,6 +320,9 @@ let g:autoclose_vim_commentmode = 1
 
 " Orgmode
 let g:org_export_emacs="~/bin/emacs"
+
+" Markdown
+let g:vim_markdown_conceal=0
 
 " Rust
 let g:racer_cmd = "/Users/lander/development/racer/target/release/racer"
