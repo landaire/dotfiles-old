@@ -39,7 +39,9 @@ bindkey -e
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-ZSH_TMUX_AUTOSTART=false
+if [[ $- == *i* ]]; then
+	ZSH_TMUX_AUTOSTART=true
+fi
 ZSH_TMUX_AUTOCONNECT=false
 PURE_PROMPT_SYMBOL=\$
 
