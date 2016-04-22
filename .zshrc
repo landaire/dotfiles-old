@@ -40,7 +40,7 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 if [[ $- == *i* ]]; then
-	ZSH_TMUX_AUTOSTART=true
+	ZSH_TMUX_AUTOSTART=false
 fi
 ZSH_TMUX_AUTOCONNECT=false
 PURE_PROMPT_SYMBOL=\$
@@ -50,7 +50,7 @@ antigen bundle sindresorhus/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle skx/sysadmin-util
-antigen bundle tarruda/zsh-autosuggestions
+#antigen bundle tarruda/zsh-autosuggestions
 antigen bundle tmux
 
 
