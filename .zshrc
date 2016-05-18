@@ -11,6 +11,21 @@ source $HOME/.profile
 export PATH=$PATH:"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/Users/lander/go/bin"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+# filename (if known), line number if known, falling back to percent if known,
+# falling back to byte offset, falling back to dash
+export LESSPROMPT='?f%f .?ltLine %lt:?pt%pt\%:?btByte %bt:-...'
+
+# i = case-insensitive searches, unless uppercase characters in search string
+# F = exit immediately if output fits on one screen
+# M = verbose prompt
+# R = ANSI color support
+# S = chop long lines (rather than wrap them onto next line)
+# X = suppress alternate screen
+export LESS=iFMRSX
+
+# colour ls listings
+export CLICOLOR=true
+
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
@@ -25,11 +40,30 @@ setopt APPEND_HISTORY
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
 setopt HIST_FIND_NO_DUPS
-setopt HIST_IGNORE_SPACE
 setopt NO_HIST_BEEP
-setopt SHARE_HISTORY
 setopt HIST_REDUCE_BLANKS
-setopt CORRECT
+
+setopt autocd               # .. is shortcut for cd .. (etc)
+setopt autoparamslash       # tab completing directory appends a slash
+setopt autopushd            # cd automatically pushes old dir onto dir stack
+setopt clobber              # allow clobbering with >, no need to use >!
+setopt correct              # command auto-correction
+setopt correctall           # argument auto-correction
+setopt noflowcontrol        # disable start (C-s) and stop (C-q) characters
+setopt nonomatch            # unmatched patterns are left unchanged
+setopt histignorealldups    # filter duplicates from history
+setopt histignorespace      # don't record commands starting with a space
+setopt histverify           # confirm history expansion (!$, !!, !foo)
+setopt ignoreeof            # prevent accidental C-d from exiting shell
+setopt interactivecomments  # allow comments, even in interactive shells
+setopt printexitvalue       # for non-zero exit status
+setopt pushdignoredups      # don't push multiple copies of same dir onto stack
+setopt pushdsilent          # don't print dir stack after pushing/popping
+setopt sharehistory         # share history across shells
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
 
 autoload -U colors && colors
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
@@ -91,3 +125,40 @@ man() {
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+autoload -U add-zsh-hook
+
+function set-tab-and-window-title() {
+  emulate -L zsh
+  local CMD="${1:gs/$/\\$}"
+  print -Pn "\e]0;$CMD:q\a"
+}
+
+function update-window-title-precmd() {
+  emulate -L zsh
+  set-tab-and-window-title `history | tail -1 | cut -b8-`
+}
+add-zsh-hook precmd update-window-title-precmd
+
+function update-window-title-preexec() {
+  emulate -L zsh
+  setopt extended_glob
+
+  # skip ENV=settings, sudo, ssh; show first distinctive word of command;
+  # mostly stolen from:
+  #   https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/termsupport.zsh
+  set-tab-and-window-title ${2[(wr)^(*=*|mosh|ssh|sudo)]}
+}
+add-zsh-hook preexec update-window-title-preexec
+
+function update-window-title-preexec() {
+  emulate -L zsh
+  setopt extended_glob
+
+  # skip ENV=settings, sudo, ssh; show first distinctive word of command;
+  # mostly stolen from:
+  #   https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/termsupport.zsh
+  set-tab-and-window-title ${2[(wr)^(*=*|mosh|ssh|sudo)]}
+}
+add-zsh-hook preexec update-window-title-preexec
+
