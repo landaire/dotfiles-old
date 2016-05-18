@@ -3,6 +3,10 @@ filetype off									" required
 
 autocmd filetype crontab setlocal nobackup nowritebackup
 
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'MattesGroeger/vim-bookmarks'
@@ -37,8 +41,9 @@ Plug 'landaire/deoplete-swift'
 
 "Plug 'zchee/deoplete-clang'								" C/C++ autocompletion
 
-Plug 'Shougo/echodoc.vim'      " Show messages in echo area
-Plug 'Shougo/deoplete.nvim'    " Async autocomplete for neovim
+Plug 'Shougo/echodoc.vim'                                   " Show messages in echo area
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " Async autocomplete for neovim
+Plug 'zchee/deoplete-clang'
 
 Plug 'mbbill/undotree'         " Show history
 
@@ -49,7 +54,7 @@ Plug 'JesseKPhillips/d.vim'    " D highlighting
 Plug 'scrooloose/nerdtree'     " File tree
 
 Plug 'rust-lang/rust.vim'      " Rust highlighting and other stuff
-Plug 'phildawes/racer'         " Rust autocomplete
+Plug 'racer-rust/vim-racer'    " Rust autocomplete
 
 Plug 'eagletmt/neco-ghc'       " Haskell autocomplete
 
@@ -58,6 +63,8 @@ Plug 'plasticboy/vim-markdown' " Markdown mode
 Plug 'fidian/hexmode'          " Binary files
 
 " Utilities
+Plug 'rking/ag.vim'
+Plug 'airblade/vim-rooter'      " Automatically set project root
 Plug 'osyo-manga/vim-over'      " Substitution preview
 Plug 'scrooloose/nerdcommenter' " Commenting crap
 Plug 'godlygeek/tabular'        " Align things at their equal sign
@@ -109,16 +116,16 @@ Plug 'elixir-lang/vim-elixir'
 call plug#end()						 " required
 
 " ===== General settings ====
-set conceallevel=2
+set conceallevel=1
 
 " Folding
-set foldenable
-set foldlevelstart=20		" open most folds by default
-set foldnestmax=10			" 10 nested fold max
+"set foldenable
+"set foldlevelstart=20		" open most folds by default
+"set foldnestmax=10			" 10 nested fold max
 
 " f open/closes folds
 nnoremap f za
-set foldmethod=syntax
+"set foldmethod=syntax
 
 " Move around "visual" lines instead of actual lines
 nnoremap j gj
@@ -131,8 +138,8 @@ set autoindent						" Indent based off the last line
 
 set ruler									" Show the line number and column
 
-set textwidth=250					" Maximum width of text that is being inserted. A longer
-													" line will be broken after white space to get this width.
+set textwidth=80                                     " Maximum width of text that is being inserted. A longer
+													 " line will be broken after white space to get this width.
 
 set formatoptions=c,q,r,t " This is a sequence of letters which describes how
 													" automatic formatting is to be done.
@@ -168,12 +175,45 @@ set clipboard=unnamed " make clipboard work
 " Tab config
 filetype plugin indent on
 set tabstop=2
+set softtabstop=2
 set shiftwidth=2
-"set expandtab
+set expandtab
+
+set scrolloff=3                       " start scrolling 3 lines before edge of viewport
+set shiftround                        " always indent by multiple of shiftwidth
+
+set shortmess+=A                      " ignore annoying swapfile messages
+set shortmess+=I                      " no splash screen
+set shortmess+=O                      " file-read message overwrites previous
+set shortmess+=T                      " truncate non-file messages in middle
+set shortmess+=W                      " don't echo "[w]"/"[written]" when writing
+set shortmess+=a                      " use abbreviations in messages eg. `[RO]` instead of `[readonly]`
+set shortmess+=o                      " overwrite file-written messages
+set shortmess+=t                      " truncate file messages at start
+
+if has('linebreak')
+  let &showbreak='⤷ '                 " ARROW POINTING DOWNWARDS THEN CURVING RIGHTWARDS (U+2937, UTF-8: E2 A4 B7)
+endif
+
+if v:progname !=# 'vi'
+  set softtabstop=-1                  " use 'shiftwidth' for tab/bs at end of line
+endif
+
+if has('windows')
+  set splitbelow                      " open horizontal splits below current window
+endif
+
+if has('vertsplit')
+  set splitright                      " open vertical splits to the right of the current window
+endif
 
 " Show the X-char color column in all files
-highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
-set colorcolumn=80
+if exists('+colorcolumn')
+  " Highlight up to 255 columns (this is the current Vim max) beyond 'textwidth'
+  let &l:colorcolumn='+' . join(range(0, 254), ',+')
+endif
+" highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+" set colorcolumn=80
 
 " Show the colorcolumn when editing a git commit
 au FileType gitcommit set tw=72 |  set colorcolumn=50
@@ -182,8 +222,8 @@ au FileType gitcommit set tw=72 |  set colorcolumn=50
 setlocal spell spelllang=en_us
 
 " ======== UI Config =========
-" Enable TrueColor support
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" Enable truecolor support
+set termguicolors
 " Enable pipe cursor when in insert mode
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
@@ -203,37 +243,74 @@ let g:terminal_color_12 = '#ebcb8b'
 let g:terminal_color_13 = '#8fa1b3'
 let g:terminal_color_14 = '#b48ead'
 let g:terminal_color_15 = '#eff1f5'
+let g:terminal_color_16 = '#d08770'
+let g:terminal_color_17 = '#ab7967'
+let g:terminal_color_18 = '#343d46'
+let g:terminal_color_19 = '#4f5b66'
+let g:terminal_color_20 = '#a7adba'
+let g:terminal_color_21 = '#dfe1e8'
 
 " Color scheme
 set background=dark
 " let base16colorspace=256	" Access colors present in 256 colorspace
 colorscheme base16-ocean
 let g:base16_shell_path="$HOME/.config/base16-shell"
-" colorscheme darcula
 
 " Airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme = "base16_ocean"
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_left_alt_sep=''
-let g:airline_right_alt_sep=''
+"let g:airline_left_sep=''
+"let g:airline_right_sep=''
+"let g:airline_left_alt_sep=''
+"let g:airline_right_alt_sep=''
 
 " View saving
 set viewoptions=cursor,folds,slash,unix
 
 " Indent indicators
-set list lcs=tab:\│\ 
+set list                              " show whitespace
+set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
+set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)
+                                      " + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
+set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
+set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
+set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
 let g:indentLine_char = '│'
-let g:indentLine_leadingSpaceEnabled=1
 let g:indentLine_enabled=1
+"let g:indentLine_leadingSpaceEnabled=1
 let g:indentLine_leadingSpaceChar='·'
 
 " ========= Utility Config ===========
+autocmd BufWritePre * StripWhitespace
 
 " === Key bindings ===
+
+" From http://ddrscott.github.io/blog/2016/vim-toggle-movement/
+function! ToggleMovement(firstOp, thenOp)
+	let pos = getpos('.')
+	execute "normal! " . a:firstOp
+	if pos == getpos('.')
+		execute "normal! " . a:thenOp
+	endif
+endfunction
+
+" The original carat 0 swap
+nnoremap <silent> 0 :call ToggleMovement('^', '0')<CR>
+
+" How about ; and ,
+nnoremap <silent> ; :call ToggleMovement(';', ',')<CR>
+nnoremap <silent> , :call ToggleMovement(',', ';')<CR>
+
+" How about H and L
+nnoremap <silent> H :call ToggleMovement('H', 'L')<CR>
+nnoremap <silent> L :call ToggleMovement('L', 'H')<CR>
+
+" How about G and gg
+nnoremap <silent> G :call ToggleMovement('G', 'gg')<CR>
+nnoremap <silent> gg :call ToggleMovement('gg', 'G')<CR>
+
 " Press shift-enter to add a new line without moving cursor
 inoremap <silent> <s-cr> <esc>m`o<esc>``a
 
@@ -261,8 +338,10 @@ endif
 nnoremap <Leader>ut :UndotreeToggle<cr>
 
 " Nerdtree
-"map <Leader>ft :NERDTreeToggle<CR>
-map <Leader>ft :call OpenRanger()<CR>
+map <Leader>ft :NERDTreeToggle<CR>
+"map <Leader>ft :call OpenRanger()<CR>
+"
+autocmd FileType swift imap <buffer> <C-j> <Plug>(deoplete_swift_jump_to_placeholder)
 
 " Tagbar
 let g:tagbar_type_d = {
@@ -325,7 +404,7 @@ let g:org_export_emacs="~/bin/emacs"
 let g:vim_markdown_conceal=0
 
 " Rust
-let g:racer_cmd = "/Users/lander/development/racer/target/release/racer"
+let g:rustfmt_autosave = 1
 let $RUST_SRC_PATH="/usr/local/src/rust/src/"
 
 " neco-ghc
@@ -333,12 +412,12 @@ let $RUST_SRC_PATH="/usr/local/src/rust/src/"
 
 " fzf
 nnoremap <silent> <leader>p :FZF<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>m :History<CR>
+nnoremap <silent> <leader>bb :Buffers<CR>
+nnoremap <silent> <leader>fr :History<CR>
 nnoremap <silent> <leader>t :Tags<CR>
 nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>pc :Commits<CR>
-nnoremap <silent> <leader>bc :BCommits<CR>
+nnoremap <silent> <leader>gc :BCommits<CR>
 
 " ctrlp
 "let g:ctrlp_map = '<Leader>p'
@@ -392,11 +471,11 @@ let g:formatters_rs = ['rustfmt']
 
 " Autochdir
 " set vim to chdir for each file
-"if exists('+autochdir')
-		"set autochdir
-"else
-		"autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
-"endif
+if exists('+autochdir')
+    set autochdir
+else
+    autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+endif
 
 " Go
 let g:go_fmt_command = "/Users/lander/go/bin/goimports"
@@ -418,5 +497,5 @@ let g:neomake_html_tidy_blocklevel_tags = ['nav']
 autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 if has('gui_running')
-	set guifont=Fira\ Code:h11
+	set guifont=Hack:h11
 endif
