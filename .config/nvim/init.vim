@@ -492,9 +492,6 @@ inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
 set isfname-==
 
-" PHP config
-let g:phpcomplete_index_composer_command='composer'
-
 " Autoformat configs
 let g:formatdef_dfmt = '"/Users/lander/development/dfmt/bin/dfmt --brace_style=otbs"'
 let g:formatters_d = ['dfmt']
