@@ -167,6 +167,9 @@ set smartcase							" Override ignorecase if an uppercase char is in the search
 
 " Misc
 
+" Load .vimrc files in the current dir
+set exrc
+
 " Show the line number
 set number
 
