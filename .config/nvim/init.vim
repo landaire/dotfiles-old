@@ -303,11 +303,11 @@ autocmd BufWritePre * StripWhitespace
 
 " From http://ddrscott.github.io/blog/2016/vim-toggle-movement/
 function! ToggleMovement(firstOp, thenOp)
-	let pos = getpos('.')
-	execute "normal! " . a:firstOp
-	if pos == getpos('.')
-		execute "normal! " . a:thenOp
-	endif
+  let pos = getpos('.')
+  execute "normal! " . a:firstOp
+  if pos == getpos('.')
+    execute "normal! " . a:thenOp
+  endif
 endfunction
 
 " The original carat 0 swap
@@ -342,10 +342,9 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " Tabular config
 if exists(":Tabularize")
-		nmap <Leader>a= :Tabularize /=<CR>
-		vmap <Leader>a= :Tabularize /=<CR>
-		nmap <Leader>a: :Tabularize /:<CR>
-		vmap <Leader>a: :Tabularize /:<CR>
+  nnoremap <Leader>t= :Tabularize /=<CR>
+
+  nnoremap <Leader>t: :Tabularize /:<CR>
 endif
 
 " Undotree
