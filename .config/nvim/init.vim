@@ -168,7 +168,7 @@ set smartcase							" Override ignorecase if an uppercase char is in the search
 " Misc
 
 " Show the line number
-set realtivenumber
+set number
 
 hi clear CursorLine
 augroup CLClear
