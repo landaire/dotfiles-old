@@ -1,5 +1,5 @@
-set nocompatible							" be iMproved, required
-filetype off									" required
+set nocompatible " be iMproved, required
+filetype off " required
 
 autocmd filetype crontab setlocal nobackup nowritebackup
 
@@ -30,19 +30,17 @@ Plug 'keith/swift.vim'
 
 " vim-go
 Plug 'fatih/vim-go'
-Plug 'nsf/gocode', {'rtp': 'vim/'}				" Go autocomplete daemon
+Plug 'nsf/gocode', {'rtp': 'vim/'}	" Go autocomplete daemon
 Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocomplete hook for deoplete
 
 " HTML
 Plug 'othree/html5.vim'
 
-Plug 'zchee/deoplete-jedi'								" Python autocompletion
+Plug 'zchee/deoplete-jedi'	" Python autocompletion
 
-Plug 'landaire/deoplete-d'								" D autocompletion
+Plug 'landaire/deoplete-d'	" D autocompletion
 
 Plug 'landaire/deoplete-swift'
-
-"Plug 'zchee/deoplete-clang'								" C/C++ autocompletion
 
 Plug 'Shougo/echodoc.vim'                                   " Show messages in echo area
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " Async autocomplete for neovim
@@ -139,36 +137,36 @@ nnoremap k gk
 set hidden " Allow having multiple dirty buffers
 
 set termencoding=utf-8
-set autoindent						" Indent based off the last line
+set autoindent	" Indent based off the last line
 
-set ruler									" Show the line number and column
+set ruler " Show the line number and column
 
-set textwidth=80                                     " Maximum width of text that is being inserted. A longer
-													 " line will be broken after white space to get this width.
+set textwidth=80 " Maximum width of text that is being inserted. A longer
+		 " line will be broken after white space to get this width.
 
 set formatoptions=c,q,r,t " This is a sequence of letters which describes how
-													" automatic formatting is to be done.
-													"
-													" letter		meaning when present in 'formatoptions'
-													" ------		---------------------------------------
-													" c					Auto-wrap comments using textwidth, inserting
-													" the current comment leader automatically.
-													" q					Allow formatting of comments with " gq " .
-													" r					Automatically insert the current comment leader
-													" after hitting <Enter> in Insert mode.
-													" t					Auto-wrap text using textwidth (does not apply
-													" to comments)<Paste>
+			  " automatic formatting is to be done.
+			  "
+			  " letter		meaning when present in 'formatoptions'
+			  " ------		---------------------------------------
+			  " c					Auto-wrap comments using textwidth, inserting
+			  " the current comment leader automatically.
+			  " q					Allow formatting of comments with               " gq " .
+			  " r					Automatically insert the current comment leader
+			  " after hitting <Enter> in Insert mode.
+			  " t					Auto-wrap text using textwidth (does not apply
+			  " to comments)<Paste>
 
-set showmatch							" Jump to matching bracket when one is inserted
+set showmatch " Jump to matching bracket when one is inserted
 
-set hlsearch							" When there is a previous search pattern highlight all of its
-													" matches
+set hlsearch	" When there is a previous search pattern highlight all of its
+		" matches
 
-set incsearch							" Show matches while typing
+set incsearch	" Show matches while typing
 
-set ignorecase						" Ignore case when searching
+set ignorecase	" Ignore case when searching
 
-set smartcase							" Override ignorecase if an uppercase char is in the search
+set smartcase	" Override ignorecase if an uppercase char is in the search
 
 " Misc
 
@@ -177,16 +175,6 @@ set exrc
 
 " Show the line number
 set number
-
-hi clear CursorLine
-augroup CLClear
-  autocmd! ColorScheme * hi clear CursorLine
-augroup END
-
-hi CursorLineNR cterm=bold
-augroup CLNRSet
-  autocmd! ColorScheme * hi CursorLineNR cterm=bold
-augroup END
 
 set mouse=a
 
@@ -244,10 +232,20 @@ au FileType gitcommit set tw=72 |  set colorcolumn=50
 setlocal spell spelllang=en_us
 
 " ======== UI Config =========
+" Color scheme
+set background=dark
+" let base16colorspace=256	" Access colors present in 256 colorspace
+colorscheme base16-ocean
+let g:base16_shell_path="$HOME/.config/base16-shell"
+
 " Enable truecolor support
 set termguicolors
+
 " Enable pipe cursor when in insert mode
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+" Highlight current line number
+hi CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
 
 let g:terminal_color_0  = '#2b303b'
 let g:terminal_color_1  = '#bf616a'
@@ -271,12 +269,6 @@ let g:terminal_color_18 = '#343d46'
 let g:terminal_color_19 = '#4f5b66'
 let g:terminal_color_20 = '#a7adba'
 let g:terminal_color_21 = '#dfe1e8'
-
-" Color scheme
-set background=dark
-" let base16colorspace=256	" Access colors present in 256 colorspace
-colorscheme base16-ocean
-let g:base16_shell_path="$HOME/.config/base16-shell"
 
 " Airline
 set laststatus=2
@@ -434,6 +426,7 @@ let $RUST_SRC_PATH="/usr/local/src/rust/src/"
 
 " fzf
 nnoremap <silent> <leader>p :FZF<CR>
+nnoremap <silent> <leader>p :Files<CR>
 nnoremap <silent> <leader>bb :Buffers<CR>
 nnoremap <silent> <leader>fr :History<CR>
 nnoremap <silent> <leader>t :Tags<CR>
