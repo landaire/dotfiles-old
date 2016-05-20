@@ -166,9 +166,23 @@ set ignorecase						" Ignore case when searching
 set smartcase							" Override ignorecase if an uppercase char is in the search
 
 " Misc
-set number
+
+" Show the line number
+set realtivenumber
+
+hi clear CursorLine
+augroup CLClear
+  autocmd! ColorScheme * hi clear CursorLine
+augroup END
+
+hi CursorLineNR cterm=bold
+augroup CLNRSet
+  autocmd! ColorScheme * hi CursorLineNR cterm=bold
+augroup END
+
 set mouse=a
-" set backspace=2				" make backspace work like most other apps
+
+" Set backspace stuff
 set backspace=indent,eol,start
 set clipboard=unnamed " make clipboard work
 
