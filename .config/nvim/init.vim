@@ -9,6 +9,8 @@ endfunction
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
+
 Plug 'MattesGroeger/vim-bookmarks'
 
 " Syntax checker
@@ -23,6 +25,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'chriskempson/base16-vim'
 Plug 'blueshirts/darcula'
 
+" Languages
 Plug 'keith/swift.vim'
 
 " vim-go
@@ -43,6 +46,7 @@ Plug 'landaire/deoplete-swift'
 
 Plug 'Shougo/echodoc.vim'                                   " Show messages in echo area
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " Async autocomplete for neovim
+
 Plug 'zchee/deoplete-clang'
 
 Plug 'mbbill/undotree'         " Show history
@@ -63,6 +67,7 @@ Plug 'plasticboy/vim-markdown' " Markdown mode
 Plug 'fidian/hexmode'          " Binary files
 
 " Utilities
+Plug 'tpope/vim-sleuth'         " Detect tabwidth from file
 Plug 'rking/ag.vim'
 Plug 'airblade/vim-rooter'      " Automatically set project root
 Plug 'osyo-manga/vim-over'      " Substitution preview
@@ -475,10 +480,20 @@ let g:python3_host_prog  = '/usr/local/opt/python3/bin/python3'
 let g:python3_host_skip_check = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_camel_case = 1
 
 " Deoplete-clang
-let g:deoplete#sources#clang#clang_header = '/usr/local/include/clang/'
-let g:deoplete#sources#clang#libclang_path = '/usr/local/lib/libclang.dylib'
+" let g:deoplete#sources#clang#clang_header = '/usr/local/include/clang/'
+" let g:deoplete#sources#clang#libclang_path = '/usr/local/lib/libclang.dylib'
+
+" Deoplete
+inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
+set isfname-==
+
+" PHP config
+let g:phpcomplete_index_composer_command='composer'
 
 " Autoformat configs
 let g:formatdef_dfmt = '"/Users/lander/development/dfmt/bin/dfmt --brace_style=otbs"'
