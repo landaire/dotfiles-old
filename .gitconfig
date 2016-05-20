@@ -4,6 +4,7 @@
 [core]
 	excludesfile = /Users/lander/.gitignore_global
 	editor = nvim
+	attributesfile = /Users/lander/.gitattributes
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
