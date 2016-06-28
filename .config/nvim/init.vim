@@ -65,6 +65,10 @@ Plug 'plasticboy/vim-markdown' " Markdown mode
 Plug 'fidian/hexmode'          " Binary files
 
 " Utilities
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'     " Bracket matching
 Plug 'tpope/vim-sleuth'         " Detect tabwidth from file
 Plug 'rking/ag.vim'
 Plug 'airblade/vim-rooter'      " Automatically set project root
@@ -94,6 +98,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ap/vim-css-color'
 
 " Interface
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -184,6 +189,7 @@ set clipboard=unnamed " make clipboard work
 
 " Tab config
 filetype plugin indent on
+set smarttab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
