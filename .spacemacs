@@ -12,6 +12,7 @@
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     javascript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -37,10 +38,13 @@
       go
       rust
       swift
+      (python :variables python-enable-yapf-format-on-save t)
       ;; other "languages"
       yaml
       latex
       markdown
+      html
+      tidy
       ;; extra
       gtags
       osx
@@ -53,6 +57,7 @@
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(
+                                      org-plus-contrib
                                       ;; ac-dcd
                                      )
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -174,6 +179,8 @@ before layers configuration."
    ;; Not used for now.
    dotspacemacs-default-package-repository nil
 	 dotspacemacs-whitespace-cleanup "changed"
+   dotspacemacs-autosave-file-directly t
+   dotspacemacs-folding-method 'origami
    )
   )
 
@@ -231,6 +238,7 @@ layers configuration."
 
   ;;; powerline settings
   (setq powerline-default-separator 'arrow)
+  (spaceline-compile)
 
   ;;; Colors package settings
   (push '(bas16-ocean-dark . (50 50)) colors-theme-identifiers-sat&light)
@@ -244,7 +252,10 @@ layers configuration."
     (font-lock-add-keywords 'org-mode
                             '(("^ +\\([-*]\\) "
                                (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+    (require 'ox-confluence)
+    (add-hook 'org-mode-hook (lambda () (setq truncate-lines t)))
   )
+
 
   (require 'color)
 
@@ -256,6 +267,17 @@ layers configuration."
      `(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
      `(company-tooltip-annotation ((t (:inherit font-lock-keyword-face))))
      `(company-tooltip-common ((t (:inherit font-lock-constant-face))))))
+
+  ;; From http://stackoverflow.com/a/2478549
+  (defun unfill-paragraph ()
+    (interactive)
+    (let ((fill-column (point-max)))
+      (fill-paragraph nil)))
+
+  (defun unfill-region ()
+    (interactive)
+    (let ((fill-column (point-max)))
+      (fill-region (region-beginning) (region-end) nil)))
 )
 
 (defun dotspacemacs/user-init ()
