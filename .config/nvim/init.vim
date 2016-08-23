@@ -98,6 +98,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ap/vim-css-color'
 
 " Interface
+Plug 'mbbill/echofunc'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
@@ -146,7 +147,7 @@ set autoindent	" Indent based off the last line
 
 set ruler " Show the line number and column
 
-set textwidth=80 " Maximum width of text that is being inserted. A longer
+"set textwidth=80 " Maximum width of text that is being inserted. A longer
 		 " line will be broken after white space to get this width.
 
 set formatoptions=c,q,r,t " This is a sequence of letters which describes how
@@ -224,10 +225,10 @@ if has('vertsplit')
 endif
 
 " Show the X-char color column in all files
-if exists('+colorcolumn')
-  " Highlight up to 255 columns (this is the current Vim max) beyond 'textwidth'
-  let &l:colorcolumn='+' . join(range(0, 254), ',+')
-endif
+"if exists('+colorcolumn')
+  "" Highlight up to 255 columns (this is the current Vim max) beyond 'textwidth'
+  "let &l:colorcolumn='+' . join(range(0, 254), ',+')
+"endif
 " highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 " set colorcolumn=80
 
@@ -281,6 +282,7 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme = "base16_ocean"
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#flags = 'f'
 "let g:airline_left_sep=''
 "let g:airline_right_sep=''
 "let g:airline_left_alt_sep=''
