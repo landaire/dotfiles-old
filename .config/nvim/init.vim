@@ -65,37 +65,37 @@ Plug 'plasticboy/vim-markdown' " Markdown mode
 Plug 'fidian/hexmode'          " Binary files
 
 " Utilities
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'     " Bracket matching
-Plug 'tpope/vim-sleuth'         " Detect tabwidth from file
-Plug 'rking/ag.vim'
-Plug 'airblade/vim-rooter'      " Automatically set project root
-Plug 'osyo-manga/vim-over'      " Substitution preview
-Plug 'scrooloose/nerdcommenter' " Commenting crap
-Plug 'godlygeek/tabular'        " Align things at their equal sign
-Plug 'vim-scripts/Smart-Tabs'   " Smart tabs
-Plug 'jceb/vim-orgmode'         " Orgmode
-Plug 'vimwiki/vimwiki'          " Wiki
-Plug 'vim-scripts/utl.vim'      " Universal text linking
-Plug 'vim-scripts/repeat.vim'   " Repeat actions
-Plug 'chrisbra/NrrwRgn'         " Narrow regions
-Plug 'tpope/vim-speeddating'    " Increment/decrement dates
-Plug 'mattn/calendar-vim'       " Calendar window
-Plug 'vim-scripts/SyntaxRange'  " Change the syntax for a range
-Plug 'Konfekt/FastFold'         " Speeds up folding
-Plug 'editorconfig/editorconfig-vim' " Editorconfig support
+"Plug 'AndrewRadev/splitjoin.vim'
+"Plug 'tpope/vim-commentary'
+"Plug 'tpope/vim-surround'
+"Plug 'tpope/vim-unimpaired'     " Bracket matching
+"Plug 'tpope/vim-sleuth'         " Detect tabwidth from file
+"Plug 'rking/ag.vim'
+"Plug 'airblade/vim-rooter'      " Automatically set project root
+"Plug 'osyo-manga/vim-over'      " Substitution preview
+"Plug 'scrooloose/nerdcommenter' " Commenting crap
+"Plug 'godlygeek/tabular'        " Align things at their equal sign
+"Plug 'vim-scripts/Smart-Tabs'   " Smart tabs
+"Plug 'jceb/vim-orgmode'         " Orgmode
+"Plug 'vimwiki/vimwiki'          " Wiki
+"Plug 'vim-scripts/utl.vim'      " Universal text linking
+"Plug 'vim-scripts/repeat.vim'   " Repeat actions
+"Plug 'chrisbra/NrrwRgn'         " Narrow regions
+"Plug 'tpope/vim-speeddating'    " Increment/decrement dates
+"Plug 'mattn/calendar-vim'       " Calendar window
+"Plug 'vim-scripts/SyntaxRange'  " Change the syntax for a range
+"Plug 'Konfekt/FastFold'         " Speeds up folding
+"Plug 'editorconfig/editorconfig-vim' " Editorconfig support
 
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'tpope/vim-fugitive'
-Plug 'xolox/vim-misc'			" Required for easytags
-Plug 'xolox/vim-easytags' " ctags integration
-Plug 'easymotion/vim-easymotion'
-Plug 'ap/vim-css-color'
+"Plug 'tpope/vim-fugitive'
+"Plug 'xolox/vim-misc'			" Required for easytags
+"Plug 'xolox/vim-easytags' " ctags integration
+"Plug 'easymotion/vim-easymotion'
+"Plug 'ap/vim-css-color'
 
 " Interface
 Plug 'mbbill/echofunc'
@@ -113,7 +113,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'myusuf3/numbers.vim'
+"Plug 'myusuf3/numbers.vim'
 Plug 'mhinz/vim-startify'  " Start screen
 Plug 'junegunn/goyo.vim'	 " Distraction-free writing
 Plug 'Yggdroot/indentLine' " Indent indicators and lines
@@ -180,13 +180,18 @@ set smartcase	" Override ignorecase if an uppercase char is in the search
 set exrc
 
 " Show the line number
-set number
+set relativenumber
 
 set mouse=a
 
 " Set backspace stuff
 set backspace=indent,eol,start
 set clipboard=unnamed " make clipboard work
+
+" Show completion suggestions for commands
+set wildmenu
+set wildchar=<Tab>
+set wildmode=list:longest,full
 
 " Tab config
 filetype plugin indent on
