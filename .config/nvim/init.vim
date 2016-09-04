@@ -14,10 +14,7 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'MattesGroeger/vim-bookmarks'
 
 " Syntax checker
-Plug 'benekastah/neomake'
-
-" Buffer, tab, file management/fuzzy searching
-" Plug 'szw/vim-ctrlspace'
+"Plug 'benekastah/neomake'
 
 Plug 'Chiel92/vim-autoformat'
 
@@ -37,9 +34,7 @@ Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocomplete hook for deoplete
 Plug 'othree/html5.vim'
 
 Plug 'zchee/deoplete-jedi'	" Python autocompletion
-
 Plug 'landaire/deoplete-d'	" D autocompletion
-
 Plug 'landaire/deoplete-swift'
 
 Plug 'Shougo/echodoc.vim'                                   " Show messages in echo area
@@ -58,73 +53,62 @@ Plug 'scrooloose/nerdtree'     " File tree
 Plug 'rust-lang/rust.vim'      " Rust highlighting and other stuff
 Plug 'racer-rust/vim-racer'    " Rust autocomplete
 
-Plug 'eagletmt/neco-ghc'       " Haskell autocomplete
-
 Plug 'plasticboy/vim-markdown' " Markdown mode
 
 Plug 'fidian/hexmode'          " Binary files
 
 " Utilities
-"Plug 'AndrewRadev/splitjoin.vim'
-"Plug 'tpope/vim-commentary'
-"Plug 'tpope/vim-surround'
-"Plug 'tpope/vim-unimpaired'     " Bracket matching
-"Plug 'tpope/vim-sleuth'         " Detect tabwidth from file
-"Plug 'rking/ag.vim'
-"Plug 'airblade/vim-rooter'      " Automatically set project root
-"Plug 'osyo-manga/vim-over'      " Substitution preview
-"Plug 'scrooloose/nerdcommenter' " Commenting crap
-"Plug 'godlygeek/tabular'        " Align things at their equal sign
-"Plug 'vim-scripts/Smart-Tabs'   " Smart tabs
-"Plug 'jceb/vim-orgmode'         " Orgmode
-"Plug 'vimwiki/vimwiki'          " Wiki
-"Plug 'vim-scripts/utl.vim'      " Universal text linking
-"Plug 'vim-scripts/repeat.vim'   " Repeat actions
-"Plug 'chrisbra/NrrwRgn'         " Narrow regions
-"Plug 'tpope/vim-speeddating'    " Increment/decrement dates
-"Plug 'mattn/calendar-vim'       " Calendar window
-"Plug 'vim-scripts/SyntaxRange'  " Change the syntax for a range
-"Plug 'Konfekt/FastFold'         " Speeds up folding
-"Plug 'editorconfig/editorconfig-vim' " Editorconfig support
-
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'     " Bracket matching
+Plug 'tpope/vim-sleuth'         " Detect tabwidth from file
+Plug 'rking/ag.vim'
+Plug 'airblade/vim-rooter'      " Automatically set project root
+Plug 'osyo-manga/vim-over'      " Substitution preview
+Plug 'scrooloose/nerdcommenter' " Commenting crap
+Plug 'godlygeek/tabular'        " Align things at their equal sign
+Plug 'vim-scripts/Smart-Tabs'   " Smart tabs
+Plug 'jceb/vim-orgmode'         " Orgmode
+Plug 'vimwiki/vimwiki'          " Wiki
+Plug 'vim-scripts/utl.vim'      " Universal text linking
+Plug 'vim-scripts/repeat.vim'   " Repeat actions
+Plug 'chrisbra/NrrwRgn'         " Narrow regions
+Plug 'tpope/vim-speeddating'    " Increment/decrement dates
+Plug 'mattn/calendar-vim'       " Calendar window
+Plug 'vim-scripts/SyntaxRange'  " Change the syntax for a range
+Plug 'Konfekt/FastFold'         " Speeds up folding
+Plug 'editorconfig/editorconfig-vim' " Editorconfig support
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-"Plug 'tpope/vim-fugitive'
-"Plug 'xolox/vim-misc'			" Required for easytags
-"Plug 'xolox/vim-easytags' " ctags integration
-"Plug 'easymotion/vim-easymotion'
-"Plug 'ap/vim-css-color'
+Plug 'tpope/vim-fugitive'
+Plug 'xolox/vim-misc'			" Required for easytags
+Plug 'xolox/vim-easytags' " ctags integration
+Plug 'easymotion/vim-easymotion'
+Plug 'ap/vim-css-color'
 
 " Interface
 Plug 'mbbill/echofunc'
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
-Plug 'majutsushi/tagbar'
 Plug 'spf13/vim-autoclose'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
-"Plug 'myusuf3/numbers.vim'
 Plug 'mhinz/vim-startify'  " Start screen
 Plug 'junegunn/goyo.vim'	 " Distraction-free writing
 Plug 'Yggdroot/indentLine' " Indent indicators and lines
 Plug 'vim-scripts/restore_view.vim' " Save/restore views
-" Plug 'roman/golden-ratio' " Golden ratio for windows
-
-Plug 'elixir-lang/vim-elixir'
 
 call plug#end()						 " required
 
-" ===== General settings ====
+"" ===== General settings ====
 set conceallevel=1
 
 " Folding
@@ -132,9 +116,9 @@ set conceallevel=1
 "set foldlevelstart=20		" open most folds by default
 "set foldnestmax=10			" 10 nested fold max
 
-" f open/closes folds
+"" f open/closes folds
 nnoremap f za
-"set foldmethod=syntax
+""set foldmethod=syntax
 
 " Move around "visual" lines instead of actual lines
 nnoremap j gj
@@ -144,6 +128,7 @@ set hidden " Allow having multiple dirty buffers
 
 set termencoding=utf-8
 set autoindent	" Indent based off the last line
+set smartindent
 
 set ruler " Show the line number and column
 
@@ -180,6 +165,7 @@ set smartcase	" Override ignorecase if an uppercase char is in the search
 set exrc
 
 " Show the line number
+set number
 set relativenumber
 
 set mouse=a
@@ -241,12 +227,12 @@ endif
 au FileType gitcommit set tw=72 |  set colorcolumn=50
 
 " Enable spellcheck
-setlocal spell spelllang=en_us
+"setlocal spell spelllang=en_us
 
 " ======== UI Config =========
 " Color scheme
 set background=dark
-" let base16colorspace=256	" Access colors present in 256 colorspace
+"let base16colorspace=256	" Access colors present in 256 colorspace
 colorscheme base16-ocean
 let g:base16_shell_path="$HOME/.config/base16-shell"
 
@@ -288,10 +274,10 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = "base16_ocean"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#flags = 'f'
-"let g:airline_left_sep=''
-"let g:airline_right_sep=''
-"let g:airline_left_alt_sep=''
-"let g:airline_right_alt_sep=''
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_left_alt_sep=''
+let g:airline_right_alt_sep=''
 
 " View saving
 set viewoptions=cursor,folds,slash,unix
@@ -307,9 +293,12 @@ set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
 let g:indentLine_char = '│'
 let g:indentLine_enabled=1
 "let g:indentLine_leadingSpaceEnabled=1
-let g:indentLine_leadingSpaceChar='·'
+"let g:indentLine_leadingSpaceChar='·'
+let g:indentLine_concealcursor = 'niv' " (default 'inc')
+let g:indentLine_conceallevel = 2  " (default 2)
+let g:indentLine_color_term = 239
 
-" ========= Utility Config ===========
+"" ========= Utility Config ===========
 autocmd BufWritePre * StripWhitespace
 
 " === Key bindings ===
@@ -498,9 +487,9 @@ inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
 set isfname-==
 
 " Autoformat configs
-let g:formatdef_dfmt = '"/Users/lander/development/dfmt/bin/dfmt --brace_style=otbs"'
+let g:formatdef_dfmt = '"dfmt --brace_style=otbs"'
 let g:formatters_d = ['dfmt']
-let g:formatdef_rustfmt = '"/Users/lander/development/rust/rustfmg/target/release/rustfmt"'
+let g:formatdef_rustfmt = 'rustfmt'
 let g:formatters_rs = ['rustfmt']
 
 " Autochdir
@@ -512,7 +501,7 @@ else
 endif
 
 " Go
-let g:go_fmt_command = "/Users/lander/go/bin/goimports"
+let g:go_fmt_command = "goimports"
 
 " Neomake
 set statusline+=%#warningmsg#
@@ -528,8 +517,25 @@ let g:neomake_html_tidy_blocklevel_tags = ['nav']
 
 " ====== Other Vim config ======
 " Automatically highlight symbol under cursor
-autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+function! s:highlight_symbol()
+  augroup HighlightSymbol
+    autocmd HighlightSymbol CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+  augroup END
+endfunction
+
+function! s:unhighlight_symbol()
+  autocmd! HighlightSymbol CursorMoved
+  let @/ = ""
+  match IncSearch //
+endfunction
+
+command! -bar HighlightSymbol call s:highlight_symbol()
+command! -bar UnhighlightSymbol call s:unhighlight_symbol()
+
+" Performance improving things
+set re=1
+set lazyredraw
 
 if has('gui_running')
-	set guifont=Hack:h11
+  set guifont=Hack:h11
 endif
