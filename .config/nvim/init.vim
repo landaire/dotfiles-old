@@ -14,7 +14,7 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'MattesGroeger/vim-bookmarks'
 
 " Syntax checker
-"Plug 'benekastah/neomake'
+Plug 'benekastah/neomake'
 
 Plug 'Chiel92/vim-autoformat'
 
@@ -239,8 +239,10 @@ let g:base16_shell_path="$HOME/.config/base16-shell"
 " Enable truecolor support
 set termguicolors
 
-" Enable pipe cursor when in insert mode
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+if has('nvim')
+  " Enable pipe cursor when in insert mode
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+endif
 
 " Highlight current line number
 hi CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
@@ -283,17 +285,17 @@ let g:airline_right_alt_sep=''
 set viewoptions=cursor,folds,slash,unix
 
 " Indent indicators
-set list                              " show whitespace
-set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
-set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)
-                                      " + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
-set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
-set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
-set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
+"set list                              " show whitespace
+"set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
+"set listchars+=tab:\ \                   " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)
+                                      "" + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
+"set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
+"set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
+"set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
 let g:indentLine_char = '│'
 let g:indentLine_enabled=1
-"let g:indentLine_leadingSpaceEnabled=1
-"let g:indentLine_leadingSpaceChar='·'
+let g:indentLine_leadingSpaceEnabled=1
+let g:indentLine_leadingSpaceChar='·'
 let g:indentLine_concealcursor = 'niv' " (default 'inc')
 let g:indentLine_conceallevel = 2  " (default 2)
 let g:indentLine_color_term = 239
@@ -336,8 +338,10 @@ nmap <silent> <BS>	:nohlsearch<CR>
 " Remap leader to <SPC>
 let mapleader=' '
 
-" Map ,e to go out of term mode to normal mode
-tnoremap <ESC> <C-\><C-n>
+if has('nvim')
+  " Map ,e to go out of term mode to normal mode
+  tnoremap <ESC> <C-\><C-n>
+endif
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
@@ -435,22 +439,6 @@ nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>pc :Commits<CR>
 nnoremap <silent> <leader>gc :BCommits<CR>
 
-" ctrlp
-"let g:ctrlp_map = '<Leader>p'
-"set wildignore+=*/tmp/*,*.so,*.swp,*.zip			" MacOSX/Linux
-"let g:ctrlp_custom_ignore = {
-	"\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	"\ 'file': '\v\.(exe|so|dll)$',
-	"\ }
-
-" D config
-let g:dutyl_stdImportPaths=['/usr/local/include/dlang/dmd']
-call dutyl#register#tool('dcd-client','/usr/local/bin/dcd-client')
-call dutyl#register#tool('dcd-server','/usr/local/bin/dcd-server')
-call dutyl#register#tool('dscanner','/Users/lander/bin/dscanner')
-call dutyl#register#tool('dfmt','/Users/lander/development/dfmt/bin/dfmt --brace_style=otbs')
-call dutyl#register#tool('dub','/usr/local/bin/dub')
-
 " Echodoc
 set noshowmode
 let g:echodoc_enable_at_startup=1
@@ -533,9 +521,9 @@ command! -bar HighlightSymbol call s:highlight_symbol()
 command! -bar UnhighlightSymbol call s:unhighlight_symbol()
 
 " Performance improving things
-set re=1
 set lazyredraw
 
 if has('gui_running')
   set guifont=Hack:h11
+  set guicolors
 endif
