@@ -2,7 +2,7 @@ source $HOME/.antigen/antigen.zsh
 
 source $HOME/.profile
 
-export PATH=$PATH:"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/Users/lander/go/bin"
+export PATH=$PATH:"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:$HOME/go/bin"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # filename (if known), line number if known, falling back to percent if known,
@@ -61,7 +61,8 @@ bindkey '^x^e' edit-command-line
 autoload -U colors && colors
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
 
-bindkey -e
+# enable vi keybindings
+bindkey -v
 #bindkey '^[R' history-incremental-search-backward
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
@@ -189,5 +190,5 @@ function tmux() {
   env SSH_AUTH_SOCK=$SOCK_SYMLINK tmux new -A -s "$SESSION_NAME"
 }
 
-export NVM_DIR="/Users/lander/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
