@@ -37,10 +37,12 @@ Plug 'zchee/deoplete-jedi'	" Python autocompletion
 Plug 'landaire/deoplete-d'	" D autocompletion
 Plug 'landaire/deoplete-swift'
 
+Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
+
 Plug 'Shougo/echodoc.vim'                                   " Show messages in echo area
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " Async autocomplete for neovim
 
-Plug 'zchee/deoplete-clang'
+"Plug 'zchee/deoplete-clang'
 
 Plug 'mbbill/undotree'         " Show history
 
@@ -61,7 +63,7 @@ Plug 'fidian/hexmode'          " Binary files
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'     " Bracket matching
+"Plug 'tpope/vim-unimpaired'     " Bracket matching
 Plug 'tpope/vim-sleuth'         " Detect tabwidth from file
 Plug 'rking/ag.vim'
 Plug 'airblade/vim-rooter'      " Automatically set project root
@@ -90,7 +92,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ap/vim-css-color'
 
 " Interface
-Plug 'mbbill/echofunc'
+"Plug 'mbbill/echofunc'
 "Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
@@ -361,6 +363,7 @@ map <Leader>ft :NERDTreeToggle<CR>
 "map <Leader>ft :call OpenRanger()<CR>
 "
 autocmd FileType swift imap <buffer> <C-j> <Plug>(deoplete_swift_jump_to_placeholder)
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " Tagbar
 let g:tagbar_type_d = {
@@ -400,12 +403,12 @@ let g:tagbar_type_d = {
 noremap <Leader>af :Autoformat<CR>
 
 " Move text blocks up and down
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-noremap <A-k> :m '<-2<CR>gv=gv
+"nnoremap <A-j> :m .+1<CR>==
+"nnoremap <A-k> :m .-2<CR>==
+"inoremap <A-j> <Esc>:m .+1<CR>==gi
+"inoremap <A-k> <Esc>:m .-2<CR>==gi
+"vnoremap <A-j> :m '>+1<CR>gv=gv
+"noremap <A-k> :m '<-2<CR>gv=gv
 
 
 " === Utility configuration ===
@@ -470,9 +473,20 @@ let g:deoplete#enable_camel_case = 1
 " let g:deoplete#sources#clang#libclang_path = '/usr/local/lib/libclang.dylib'
 
 " Deoplete
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#ignore_sources = {}
+
 inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
 set isfname-==
+let g:deoplete#omni#input_patterns.java = [
+            \'[^. \t0-9]\.\w*',
+            \'[^. \t0-9]\->\w*',
+            \'[^. \t0-9]\::\w*',
+            \]
+let g:deoplete#omni#input_patterns.jsp = ['[^. \t0-9]\.\w*']
+let g:deoplete#ignore_sources.java = ['omni']
+call deoplete#custom#set('javacomplete2', 'mark', '')
 
 " Autoformat configs
 let g:formatdef_dfmt = '"dfmt --brace_style=otbs"'
