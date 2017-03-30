@@ -25,3 +25,4 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 
 export PATH="$HOME/.cargo/bin:$PATH"
 alias prettyjson="python -m json.tool"
+alias fix='echo -e "\e<"; reset; stty sane; tput rs1; clear; echo -e "\033c"'
