@@ -1,0 +1,33 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"All Autocomplete",
+		"BracketHighlighter",
+		"Colorcoder",
+		"D Programming Language",
+		"Djaneiro",
+		"GitGutter",
+		"GoSublime",
+		"HexViewer",
+		"Indent XML",
+		"IndentX",
+		"LaTeXTools",
+		"Package Control",
+		"Pretty JSON",
+		"Rust Enhanced",
+		"RustAutoComplete",
+		"SideBarEnhancements",
+		"SublimeCodeIntel",
+		"SublimePythonIDE",
+		"Theme - amCoder",
+		"Theme - Monokai",
+		"Theme - Spacegray",
+		"Tomorrow Color Schemes",
+		"VintageLines",
+		"Vintageous"
+	]
+}

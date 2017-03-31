@@ -1,0 +1,13 @@
+{
+	"color_scheme": "Packages/Colorcoder/base16-ocean.dark (SublimePythonIDE) (Colorcoded).tmTheme",
+	"font_size": 11,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+	],
+	"original_color_scheme": "Packages/User/base16-ocean.dark (SublimePythonIDE).tmTheme",
+	"theme": "Spacegray.sublime-theme",
+	"vintage_lines.force": true,
+	"trim_trailing_white_space_on_save": true,
+	"ensure_newline_at_eof_on_save": true
+}

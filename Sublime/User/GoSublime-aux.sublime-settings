@@ -1,0 +1,26 @@
+{
+	"9o.hist./Users/lander/Documents":
+	[
+		"go run regex.go",
+		"go run yamltest.go"
+	],
+	"9o.hist./Users/lander/go/src/btree-sample":
+	[
+		"go run main.go"
+	],
+	"9o.hist./Users/lander/go/src/pinger":
+	[
+		"go run main.go"
+	],
+	"9o.hist./Users/lander/go/src/rpcclient":
+	[
+		"go run mian.go"
+	],
+	"9o.hist./Users/lander/go/src/rpcserv":
+	[
+		"go run main.go"
+	],
+	"ann": "a17.03.05-1",
+	"install_version": "r17.03.05-1",
+	"version": "r17.03.05-1"
+}
