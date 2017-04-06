@@ -5,14 +5,8 @@
 	excludesfile = /Users/lander/.gitignore_global
 	editor = nvim
 	attributesfile = /Users/lander/.gitattributes
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [push]
-	default = current
+	default = simple
 [log]
   date = relative
 [format]
@@ -24,7 +18,20 @@
 	show = diff-so-fancy | less --tabs=4 -RFX
 [diff]
 	compactionHeuristic = true
+	showUntrackedFiles = all
+	tool = icdiff
+[difftool]
+	prompt = false
+[difftool "icdiff"]
+	cmd = icdiff --line-numbers $LOCAL $REMOTE
+[merge]
+	conflictstyle = diff3
 [commit]
 	verbose = true
+	gpgSign = true
 [alias]
-	lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
+	history = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
+	# Below taken from https://blog.scottnonnenberg.com/better-git-configuration/
+	prune = fetch --prune
+	undo = reset --soft HEAD^
+	stash-all = stash save --include-untracked
