@@ -1,0 +1,8 @@
+{
+        "clients": [
+            {
+                "binary": "go-langserver",
+                "file_exts": ["go"]
+            }
+        ]
+}
