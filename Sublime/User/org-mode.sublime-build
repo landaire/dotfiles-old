@@ -1,0 +1,5 @@
+{
+    "cmd": ["pandoc", "-s", "-S", "$file", "-o", "output.docx"],
+    "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+    "selector": "source.orgmode"
+}
