@@ -17,14 +17,14 @@ if ! [[ -x /usr/local/bin/brew ]]; then
 	echo "Installing homebrew"
 
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-done
+fi
 
 if ! [[ -x /usr/local/bin/brew ]]; then
 	echo ""
 	echo "Installing homebrew"
 
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-done
+fi
 
 echo ""
 echo "Installing brew formulae..."
