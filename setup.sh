@@ -3,7 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 SUBLIME_PATH="$HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User"
-BREW_PACKAGES=(zsh ripgrep python3 fzf)
+BREW_PACKAGES=(zsh ripgrep python3 fzf vim)
 BREW_CASK_PACKAGES=(gpgtools)
 
 echo "Initializing submodules..."
