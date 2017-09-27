@@ -3,8 +3,8 @@ set -euo pipefail
 IFS=$'\n\t'
 
 SUBLIME_PATH="$HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User"
-BREW_PACKAGES="zsh ripgrep python3 fzf"
-BREW_CASK_PACKAGES="gpgtools"
+BREW_PACKAGES=(zsh ripgrep python3 fzf)
+BREW_CASK_PACKAGES=(gpgtools)
 
 echo "Initializing submodules..."
 echo ""
@@ -29,11 +29,15 @@ fi
 echo ""
 echo "Installing brew formulae..."
 
-brew install "$BREW_PACKAGES"
+for package in $BREW_PACKAGES; do
+	brew install "$package"
+done;
 
 echo ""
 echo "Installing brew casks..."
-brew cask install "$BREW_CASK_PACKAGES"
+for package in $BREW_CASK_PACKAGES; do
+	brew cask install "$package"
+done;
 
 echo ""
 echo "Adding dotfiles"
