@@ -11,6 +11,7 @@
 		"All Autocomplete",
 		"Anaconda",
 		"BracketHighlighter",
+		"CodeMap",
 		"Colorcoder",
 		"D Programming Language",
 		"DA UI",
@@ -23,6 +24,7 @@
 		"IndentX",
 		"isort",
 		"LaTeXTools",
+		"NeoVintageous",
 		"OmniSharp",
 		"orgmode",
 		"Origami",
@@ -35,12 +37,11 @@
 		"SideBarEnhancements",
 		"SublimeCodeIntel",
 		"SublimeLinter",
+		"Sublundo",
 		"Theme - amCoder",
 		"Theme - Monokai",
 		"Theme - Spacegray",
 		"Tomorrow Color Schemes",
-		"Vintage Numbers",
-		"VintageLines",
-		"Vintageous"
+		"Vintage Numbers"
 	]
 }
