@@ -41,7 +41,7 @@ setopt autocd               # .. is shortcut for cd .. (etc)
 setopt autoparamslash       # tab completing directory appends a slash
 setopt autopushd            # cd automatically pushes old dir onto dir stack
 setopt clobber              # allow clobbering with >, no need to use >!
-setopt correct              # command auto-correction
+#setopt correct              # command auto-correction
 setopt correctall           # argument auto-correction
 setopt noflowcontrol        # disable start (C-s) and stop (C-q) characters
 setopt nonomatch            # unmatched patterns are left unchanged
