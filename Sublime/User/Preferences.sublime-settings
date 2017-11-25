@@ -10,8 +10,9 @@
 	"auto_complete_commit_on_tab": true,
 	"auto_complete_cycle": true,
 	"auto_complete_with_fields": true,
-	"color_scheme": "Packages/DA UI/DA Dark.tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Mariana (SL).tmTheme",
 	"ensure_newline_at_eof_on_save": true,
+	"font_face": "Hasklig",
 	"font_size": 11,
 	"highlight_line": true,
 	"ignored_packages":
@@ -29,7 +30,7 @@
 		100
 	],
 	"spell_check": true,
-	"theme": "DA.sublime-theme",
+	"theme": "Adaptive.sublime-theme",
 	"trim_trailing_white_space_on_save": true,
 	"vintage_lines.force": true,
 	"vintage_start_in_command_mode": true,
