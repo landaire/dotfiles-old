@@ -1,9 +1,7 @@
-alias vim=nvim
 alias vimr='open -a vimr.app "$@"'
 alias cat=ccat
 alias lsl="ls -lah"
 alias lst="ls -laht"
-alias grep="rg"
 export GO15VENDOREXPERIMENT=1
 export PATH="$HOME/bin:$HOME/.rvm/bin:$HOME/.local/bin:$PATH:/usr/local/sbin" # Add RVM to PATH for scripting
 export EDITOR="nvim"
