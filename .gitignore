@@ -9,3 +9,4 @@ Package Control.cache/
 Package Control.ca-certs/
 Sublime/User/Sublundo/
 **/*.sublundo-session
+.vim/plugged/

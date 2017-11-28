@@ -545,3 +545,428 @@ Gocode pkg: "."
 Gocode env: gocode.margoEnv{LibPath:"/usr/local/Cellar/go/1.8.3/libexec/pkg/darwin_amd64:/Users/lander/go/pkg/darwin_amd64", GOOS:"darwin", GOARCH:"amd64", Compiler:"gc", GOROOT:"/usr/local/Cellar/go/1.8.3/libexec", GOPATH:"/Users/lander/go", InstallSuffix:""}
 Gocode pkg: "."
 Gocode env: gocode.margoEnv{LibPath:"/usr/local/Cellar/go/1.8.3/libexec/pkg/darwin_amd64:/Users/lander/go/pkg/darwin_amd64", GOOS:"darwin", GOARCH:"amd64", Compiler:"gc", GOROOT:"/usr/local/Cellar/go/1.8.3/libexec", GOPATH:"/Users/lander/go", InstallSuffix:""}
+
+** 2017-09-29 12:43:10.265509 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.08.23-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-09-29 12:43:10.270659 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-09-29 22:03:12.924220 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.08.23-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-09-29 22:03:12.934861 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-09-29 22:32:48.195230 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.08.23-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-09-29 22:32:48.204741 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-01 11:20:08.118324 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.08.23-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-01 11:20:08.126868 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-01 20:30:19.932018 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.08.23-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-01 20:30:19.939056 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-02 18:17:24.913217 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.08.23-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-02 18:17:24.921382 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-02 18:30:51.722936 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.08.23-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-02 18:30:51.732131 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-02 22:13:31.477984 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.08.23-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-02 22:13:31.484844 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-03 19:10:17.256839 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.08.23-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-03 19:10:17.268740 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-10 19:46:00.268156 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.08.23-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-10 19:46:00.275122 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-15 09:44:19.883067 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.08.23-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-15 09:44:19.891781 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-15 10:47:46.397982 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.08.23-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-15 10:47:46.411963 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-15 10:55:24.194633 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.10.15-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-15 10:55:24.203612 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-15 11:08:08.564233 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.10.15-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-15 11:08:08.573603 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-15 15:26:05.505516 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.10.15-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-15 15:26:05.512773 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-17 17:36:02.808715 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.10.15-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-17 17:36:02.817365 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-17 17:51:42.670518 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.10.15-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-17 17:51:42.679645 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-19 09:35:03.618391 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.10.15-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-19 09:35:03.625521 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-19 18:42:50.381485 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.10.15-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-19 18:42:50.388812 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-19 22:28:54.208974 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.10.15-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-19 22:28:54.215365 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-10-23 18:08:59.154174 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.10.15-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-10-23 18:08:59.169491 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-11-05 21:02:57.833600 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.10.15-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-11-05 21:02:57.841154 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-11-11 16:14:34.494475 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.10.15-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-11-11 16:14:34.505227 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-11-11 16:52:22.292412 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.10.15-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-11-11 16:52:22.299678 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------
+
+** 2017-11-27 18:10:31.735386 **:
+MarGo: MarGo build failed
+cmd: `['', 'build', '-tags', '', '-v', '-o', 'gosublime.margo_r17.10.15-1_go?.exe', 'disposa.blue/cmd/margo']`
+stdout: `
+
+`
+stderr: `
+
+`
+exception: `Cannot find command `go``
+--------------------------------
+
+** 2017-11-27 18:10:31.743773 **:
+MarGo: Missing required environment variables: GOROOT
+See the `Quirks` section of USAGE.md for info
+--------------------------------

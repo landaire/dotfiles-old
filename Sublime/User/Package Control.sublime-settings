@@ -2,6 +2,7 @@
 	"bootstrapped": true,
 	"in_process_packages":
 	[
+		"Vintage Numbers"
 	],
 	"installed_packages":
 	[
@@ -13,8 +14,8 @@
 		"BracketHighlighter",
 		"CodeMap",
 		"Colorcoder",
+		"CTags",
 		"D Programming Language",
-		"DA UI",
 		"Djaneiro",
 		"FileDiffs",
 		"GitGutter",
@@ -27,21 +28,24 @@
 		"NeoVintageous",
 		"OmniSharp",
 		"orgmode",
-		"Origami",
 		"Package Control",
-		"PlainTasks",
+		"PowerShell",
 		"Pretty JSON",
 		"Rust Enhanced",
 		"RustAutoComplete",
 		"ScrollOffset",
 		"SideBarEnhancements",
 		"SublimeCodeIntel",
+		"SublimeHighlight",
 		"SublimeLinter",
-		"Sublundo",
 		"Theme - amCoder",
 		"Theme - Monokai",
 		"Theme - Spacegray",
 		"Tomorrow Color Schemes",
 		"Vintage Numbers"
+	],
+	"repositories":
+	[
+		"https://github.com/n1k0/SublimeHighlight/tree/python3"
 	]
 }

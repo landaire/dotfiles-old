@@ -4,7 +4,7 @@ alias lsl="ls -lah"
 alias lst="ls -laht"
 export GO15VENDOREXPERIMENT=1
 export PATH="$HOME/bin:$HOME/.rvm/bin:$HOME/.local/bin:$PATH:/usr/local/sbin" # Add RVM to PATH for scripting
-export EDITOR="nvim"
+export EDITOR="vim"
 export PAGER="less"
 export PATH=/usr/pkg/sbin:/usr/pkg/bin:/Library/Haskell/bin:$PATH
 export RUST_SRC_PATH=/usr/local/src/rust/src
@@ -33,3 +33,9 @@ base64_decode() {
 
   echo -n $1 | base64 $flag | xxd
 }
+
+source ~/.secret_profile
+
+if command -v tmux>/dev/null; then
+  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+fi

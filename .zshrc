@@ -166,11 +166,11 @@ function tmux() {
   fi
 
   # Check for .tmux file (poor man's Tmuxinator).
-  if [ -x .tmux ]; then
+  if [ -x .tmux.conf ]; then
     # Prompt the first time we see a given .tmux file before running it.
     local DIGEST="$(openssl sha -sha512 .tmux)"
     if ! grep -q "$DIGEST" ~/..tmux.digests 2> /dev/null; then
-      cat .tmux
+      cat .tmux.conf
       read -k 1 -r \
         'REPLY?Trust (and run) this .tmux file? (t = trust, otherwise = skip) '
       echo
@@ -180,14 +180,14 @@ function tmux() {
         return
       fi
     else
-      ./.tmux
+      ./.tmux.conf
       return
     fi
   fi
 
   # Attach to existing session, or create one, based on current directory.
   SESSION_NAME=$(basename "$(pwd)")
-  env SSH_AUTH_SOCK=$SOCK_SYMLINK tmux new -A -s "$SESSION_NAME"
+  /usr/bin/env SSH_AUTH_SOCK=$SOCK_SYMLINK tmux new -A -s "$SESSION_NAME"
 }
 
 # export NVM_DIR="$HOME/.nvm"

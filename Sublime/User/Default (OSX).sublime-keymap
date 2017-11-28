@@ -1,3 +1,4 @@
 [
-	{ "keys": ["super+0"], "command": "reset_font_size" }
+	{ "keys": ["super+0"], "command": "reset_font_size" },
+	{ "keys": ["alt+d"], "command": "goto_definition" }
 ]

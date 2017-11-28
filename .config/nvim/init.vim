@@ -3,9 +3,11 @@ filetype off " required
 
 autocmd filetype crontab setlocal nobackup nowritebackup
 
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
+if has('nvim')
+  function! DoRemote(arg)
+    UpdateRemotePlugins
+  endfunction
+endif
 
 call plug#begin('~/.vim/plugged')
 
@@ -18,37 +20,32 @@ Plug 'benekastah/neomake'
 
 Plug 'Chiel92/vim-autoformat'
 
-" Color scheme
+"" Color scheme
 Plug 'chriskempson/base16-vim'
 Plug 'blueshirts/darcula'
 
-" Languages
+""***** Languages *****
 Plug 'keith/swift.vim'
 
-" vim-go
+"" vim-go
 Plug 'fatih/vim-go'
 Plug 'nsf/gocode', {'rtp': 'vim/'}	" Go autocomplete daemon
-Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocomplete hook for deoplete
 
-" HTML
+"" HTML
 Plug 'othree/html5.vim'
-
-Plug 'zchee/deoplete-jedi'	" Python autocompletion
-Plug 'landaire/deoplete-d'	" D autocompletion
-Plug 'landaire/deoplete-swift'
 
 Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
 
 Plug 'Shougo/echodoc.vim'                                   " Show messages in echo area
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " Async autocomplete for neovim
-
-"Plug 'zchee/deoplete-clang'
+if has('nvim')
+  Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocomplete hook for deoplete
+  Plug 'zchee/deoplete-jedi'	" Python autocompletion
+  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " Async autocomplete for neovim
+  Plug 'zchee/deoplete-clang'
+  Plug 'zchee/deoplete-jedi'
+endif
 
 Plug 'mbbill/undotree'         " Show history
-
-Plug 'idanarye/vim-dutyl'      " D utils (autocomplete, fmt, etc.)
-Plug 'kiith-sa/DSnips'         " D snippets
-Plug 'JesseKPhillips/d.vim'    " D highlighting
 
 Plug 'scrooloose/nerdtree'     " File tree
 
@@ -59,25 +56,22 @@ Plug 'plasticboy/vim-markdown' " Markdown mode
 
 Plug 'fidian/hexmode'          " Binary files
 
-" Utilities
+"" Utilities
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-"Plug 'tpope/vim-unimpaired'     " Bracket matching
 Plug 'tpope/vim-sleuth'         " Detect tabwidth from file
-Plug 'rking/ag.vim'
+Plug 'jremmen/vim-ripgrep'
 Plug 'airblade/vim-rooter'      " Automatically set project root
 Plug 'osyo-manga/vim-over'      " Substitution preview
 Plug 'scrooloose/nerdcommenter' " Commenting crap
 Plug 'godlygeek/tabular'        " Align things at their equal sign
 Plug 'vim-scripts/Smart-Tabs'   " Smart tabs
 Plug 'jceb/vim-orgmode'         " Orgmode
-Plug 'vimwiki/vimwiki'          " Wiki
 Plug 'vim-scripts/utl.vim'      " Universal text linking
 Plug 'vim-scripts/repeat.vim'   " Repeat actions
 Plug 'chrisbra/NrrwRgn'         " Narrow regions
 Plug 'tpope/vim-speeddating'    " Increment/decrement dates
-Plug 'mattn/calendar-vim'       " Calendar window
 Plug 'vim-scripts/SyntaxRange'  " Change the syntax for a range
 Plug 'Konfekt/FastFold'         " Speeds up folding
 Plug 'editorconfig/editorconfig-vim' " Editorconfig support
@@ -92,15 +86,12 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ap/vim-css-color'
 
 " Interface
-"Plug 'mbbill/echofunc'
-"Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'spf13/vim-autoclose'
-Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'mhinz/vim-startify'  " Start screen
@@ -134,26 +125,26 @@ set smartindent
 
 set ruler " Show the line number and column
 
-"set textwidth=80 " Maximum width of text that is being inserted. A longer
-		 " line will be broken after white space to get this width.
+set textwidth=80 " Maximum width of text that is being inserted. A longer
+		 "" line will be broken after white space to get this width.
 
 set formatoptions=c,q,r,t " This is a sequence of letters which describes how
-			  " automatic formatting is to be done.
-			  "
-			  " letter		meaning when present in 'formatoptions'
-			  " ------		---------------------------------------
-			  " c					Auto-wrap comments using textwidth, inserting
-			  " the current comment leader automatically.
-			  " q					Allow formatting of comments with               " gq " .
-			  " r					Automatically insert the current comment leader
-			  " after hitting <Enter> in Insert mode.
-			  " t					Auto-wrap text using textwidth (does not apply
-			  " to comments)<Paste>
+			  "" automatic formatting is to be done.
+			  ""
+			  "" letter		meaning when present in 'formatoptions'
+			  "" ------		---------------------------------------
+			  "" c					Auto-wrap comments using textwidth, inserting
+			  "" the current comment leader automatically.
+			  "" q					Allow formatting of comments with               " gq " .
+			  "" r					Automatically insert the current comment leader
+			  "" after hitting <Enter> in Insert mode.
+			  "" t					Auto-wrap text using textwidth (does not apply
+			  "" to comments)<Paste>
 
 set showmatch " Jump to matching bracket when one is inserted
 
 set hlsearch	" When there is a previous search pattern highlight all of its
-		" matches
+		"" matches
 
 set incsearch	" Show matches while typing
 
@@ -169,6 +160,12 @@ set exrc
 " Show the line number
 set number
 set relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+  autocmd BufLeave,FocusLost,InsertEnter * set number
+augroup end
 
 set mouse=a
 
@@ -219,8 +216,8 @@ endif
 
 " Show the X-char color column in all files
 "if exists('+colorcolumn')
-  "" Highlight up to 255 columns (this is the current Vim max) beyond 'textwidth'
-  "let &l:colorcolumn='+' . join(range(0, 254), ',+')
+ """ Highlight up to 255 columns (this is the current Vim max) beyond 'textwidth'
+ ""let &l:colorcolumn='+' . join(range(0, 254), ',+')
 "endif
 " highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 " set colorcolumn=80
@@ -231,10 +228,10 @@ au FileType gitcommit set tw=72 |  set colorcolumn=50
 " Enable spellcheck
 "setlocal spell spelllang=en_us
 
-" ======== UI Config =========
+"" ======== UI Config =========
 " Color scheme
 set background=dark
-"let base16colorspace=256	" Access colors present in 256 colorspace
+let base16colorspace=256	" Access colors present in 256 colorspace
 colorscheme base16-ocean
 let g:base16_shell_path="$HOME/.config/base16-shell"
 
@@ -246,8 +243,8 @@ if has('nvim')
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
 
-" Highlight current line number
-hi CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
+"" Highlight current line number
+"hi CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
 
 let g:terminal_color_0  = '#2b303b'
 let g:terminal_color_1  = '#bf616a'
@@ -290,7 +287,7 @@ set viewoptions=cursor,folds,slash,unix
 "set list                              " show whitespace
 "set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
 "set listchars+=tab:\ \                   " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)
-                                      "" + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
+                                     """ + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
 "set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
 "set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
 "set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
@@ -360,46 +357,8 @@ nnoremap <Leader>ut :UndotreeToggle<cr>
 
 " Nerdtree
 map <Leader>ft :NERDTreeToggle<CR>
-"map <Leader>ft :call OpenRanger()<CR>
-"
-autocmd FileType swift imap <buffer> <C-j> <Plug>(deoplete_swift_jump_to_placeholder)
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
-" Tagbar
-let g:tagbar_type_d = {
-						\ 'ctagstype' : 'd',
-						\ 'kinds'			: [
-								\ 'c:classes:1:1',
-								\ 'f:functions:1:1',
-								\ 'T:template:1:1',
-								\ 'g:enums:1:1',
-								\ 'e:enumerators:0:0',
-								\ 'u:unions:1:1',
-								\ 's:structs:1:1',
-								\ 'v:variables:1:0',
-								\ 'i:interfaces:1:1',
-								\ 'm:members',
-								\ 'a:alias'
-						\ ],
-						\'sro': '.',
-								\ 'kind2scope' : {
-								\ 'c' : 'class',
-								\ 'g' : 'enum',
-								\ 's' : 'struct',
-								\ 'u' : 'union',
-								\ 'T' : 'template'
-						\},
-						\ 'scope2kind' : {
-								\ 'enum'			: 'g',
-								\ 'class'			: 'c',
-								\ 'struct'		: 's',
-								\ 'union'			: 'u',
-								\ 'template'	: 'T'
-						\ },
-						\ 'ctagsbin' : 'dscanner',
-						\ 'ctagsargs' : ['--ctags']
-						\ }
-
+" AutoFormat
 noremap <Leader>af :Autoformat<CR>
 
 " Move text blocks up and down
@@ -429,9 +388,6 @@ let g:vim_markdown_conceal=0
 let g:rustfmt_autosave = 1
 let $RUST_SRC_PATH="/usr/local/src/rust/src/"
 
-" neco-ghc
-" let g:ycm_semantic_triggers = {'haskell' : ['.']}
-
 " fzf
 nnoremap <silent> <leader>p :FZF<CR>
 nnoremap <silent> <leader>p :Files<CR>
@@ -450,13 +406,7 @@ let g:echodoc_enable_at_startup=1
 " neocomplete like
 " https://github.com/Shougo/deoplete.nvim/blob/master/doc/deoplete.txt
 set completeopt+=noinsert
-
-" Set before than deoplete
-" deoplete#mappings#_set_completeopt() in
-" https://github.com/Shougo/deoplete.nvim/blob/master/autoload/deoplete/mappings.vim
-" https://github.com/Shougo/deoplete.nvim/blob/master/rplugin/python3/deoplete/deoplete.py
 set completeopt+=noselect
-
 set completeopt-=preview
 
 " Path to python interpreter for neovim
@@ -468,10 +418,6 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_camel_case = 1
 
-" Deoplete-clang
-" let g:deoplete#sources#clang#clang_header = '/usr/local/include/clang/'
-" let g:deoplete#sources#clang#libclang_path = '/usr/local/lib/libclang.dylib'
-
 " Deoplete
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#ignore_sources = {}
@@ -479,14 +425,8 @@ let g:deoplete#ignore_sources = {}
 inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
 set isfname-==
-let g:deoplete#omni#input_patterns.java = [
-            \'[^. \t0-9]\.\w*',
-            \'[^. \t0-9]\->\w*',
-            \'[^. \t0-9]\::\w*',
-            \]
 let g:deoplete#omni#input_patterns.jsp = ['[^. \t0-9]\.\w*']
 let g:deoplete#ignore_sources.java = ['omni']
-call deoplete#custom#set('javacomplete2', 'mark', '')
 
 " Autoformat configs
 let g:formatdef_dfmt = '"dfmt --brace_style=otbs"'
@@ -497,9 +437,9 @@ let g:formatters_rs = ['rustfmt']
 " Autochdir
 " set vim to chdir for each file
 if exists('+autochdir')
-    set autochdir
+   set autochdir
 else
-    autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+   autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
 endif
 
 " Go
