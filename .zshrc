@@ -1,5 +1,4 @@
 source $HOME/.antigen/antigen.zsh
-
 source $HOME/.profile
 
 export PATH=$PATH:"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:$HOME/go/bin"
@@ -29,7 +28,7 @@ HELPDIR=/usr/local/share/zsh/help
 
 SAVEHIST=10000
 HISTSIZE=10000
-HISTFILE=~/.zsh_history
+HISTFILE=$HOME/.zsh_history
 setopt APPEND_HISTORY
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
@@ -41,8 +40,6 @@ setopt autocd               # .. is shortcut for cd .. (etc)
 setopt autoparamslash       # tab completing directory appends a slash
 setopt autopushd            # cd automatically pushes old dir onto dir stack
 setopt clobber              # allow clobbering with >, no need to use >!
-#setopt correct              # command auto-correction
-setopt correctall           # argument auto-correction
 setopt noflowcontrol        # disable start (C-s) and stop (C-q) characters
 setopt nonomatch            # unmatched patterns are left unchanged
 setopt histignorealldups    # filter duplicates from history
@@ -63,7 +60,6 @@ export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes
 
 # enable vi keybindings
 bindkey -e
-#bindkey '^[R' history-incremental-search-backward
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
@@ -73,7 +69,6 @@ antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle skx/sysadmin-util
 
 antigen apply
 
