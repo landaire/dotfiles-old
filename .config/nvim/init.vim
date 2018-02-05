@@ -47,7 +47,7 @@ endif
 
 Plug 'mbbill/undotree'         " Show history
 
-Plug 'scrooloose/nerdtree'     " File tree
+Plug 'tpope/vim-vinegar'
 
 Plug 'rust-lang/rust.vim'      " Rust highlighting and other stuff
 Plug 'racer-rust/vim-racer'    " Rust autocomplete
@@ -86,10 +86,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ap/vim-css-color'
 
 " Interface
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'spf13/vim-autoclose'
 Plug 'airblade/vim-gitgutter'
@@ -355,9 +353,6 @@ endif
 " Undotree
 nnoremap <Leader>ut :UndotreeToggle<cr>
 
-" Nerdtree
-map <Leader>ft :NERDTreeToggle<CR>
-
 " AutoFormat
 noremap <Leader>af :Autoformat<CR>
 
@@ -397,6 +392,7 @@ nnoremap <silent> <leader>t :Tags<CR>
 nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>pc :Commits<CR>
 nnoremap <silent> <leader>gc :BCommits<CR>
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 " Echodoc
 set noshowmode

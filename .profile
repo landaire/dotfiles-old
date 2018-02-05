@@ -8,6 +8,7 @@ export EDITOR="vim"
 export PAGER="less"
 export PATH=/usr/pkg/sbin:/usr/pkg/bin:/Library/Haskell/bin:$PATH
 export RUST_SRC_PATH=/usr/local/src/rust/src
+export TERM="xterm-256color"
 #export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
 #export TOOLCHAINS=swift
 
@@ -27,15 +28,17 @@ make_venv() { python3 -m venv "$HOME/.virtualenvs/$1" }
 load_venv() { source "$HOME/.virtualenvs/$1/bin/activate" }
 base64_decode() {
   flag='-d'
-  if uname -a | grep 'xnu'; then
+  if uname -a | grep 'xnu' > /dev/null; then
     flag='-D'
   fi
 
   echo -n $1 | base64 $flag | xxd
 }
 
-source ~/.secret_profile
-
-if command -v tmux>/dev/null; then
-  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+if [ -f ~/.secret_profile ]; then
+	source ~/.secret_profile
 fi
+
+#if command -v tmux>/dev/null; then
+#  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+#fi

@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/lander'
-let g:netrw_dirhist_2='/Users/lander/development/ssql'
-let g:netrw_dirhist_3='/Users/lander/development/ssql/source'
-let g:netrw_dirhist_4='/Users/lander/development/ssql/source/ssql'
-let g:netrw_dirhist_5='/Users/lander/development/ssql/source'
-let g:netrw_dirhist_6='/Users/lander/development/ssql/source/ssql'
-let g:netrw_dirhist_7='/Users/lander/development/ssql/source/ssql/server'
-let g:netrw_dirhist_8='/Users/lander/development/ssql/source/ssql'
-let g:netrw_dirhist_9='/Users/x3oa'
+let g:netrw_dirhist_cnt =0
