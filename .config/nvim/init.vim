@@ -11,6 +11,17 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !./install.py
+  endif
+endfunction
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 
 Plug 'MattesGroeger/vim-bookmarks'
@@ -37,13 +48,6 @@ Plug 'othree/html5.vim'
 Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
 
 Plug 'Shougo/echodoc.vim'                                   " Show messages in echo area
-if has('nvim')
-  Plug 'zchee/deoplete-go', { 'do': 'make'} " Go autocomplete hook for deoplete
-  Plug 'zchee/deoplete-jedi'	" Python autocompletion
-  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " Async autocomplete for neovim
-  Plug 'zchee/deoplete-clang'
-  Plug 'zchee/deoplete-jedi'
-endif
 
 Plug 'mbbill/undotree'         " Show history
 
@@ -139,7 +143,7 @@ set formatoptions=c,q,r,t " This is a sequence of letters which describes how
 			  "" t					Auto-wrap text using textwidth (does not apply
 			  "" to comments)<Paste>
 
-set showmatch " Jump to matching bracket when one is inserted
+"set showmatch " Jump to matching bracket when one is inserted
 
 set hlsearch	" When there is a previous search pattern highlight all of its
 		"" matches
@@ -398,6 +402,9 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 set noshowmode
 let g:echodoc_enable_at_startup=1
 
+" YouCompleteMe (YCM)
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
 " Deoplete
 " neocomplete like
 " https://github.com/Shougo/deoplete.nvim/blob/master/doc/deoplete.txt
@@ -405,24 +412,7 @@ set completeopt+=noinsert
 set completeopt+=noselect
 set completeopt-=preview
 
-" Path to python interpreter for neovim
-let g:python3_host_prog  = '/usr/local/opt/python3/bin/python3'
-" Skip the check of neovim module
-let g:python3_host_skip_check = 1
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_camel_case = 1
-
-" Deoplete
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#ignore_sources = {}
-
-inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
 set isfname-==
-let g:deoplete#omni#input_patterns.jsp = ['[^. \t0-9]\.\w*']
-let g:deoplete#ignore_sources.java = ['omni']
 
 " Autoformat configs
 let g:formatdef_dfmt = '"dfmt --brace_style=otbs"'
