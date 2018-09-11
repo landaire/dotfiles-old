@@ -9,14 +9,12 @@ export PAGER="less"
 export PATH=/usr/pkg/sbin:/usr/pkg/bin:/Library/Haskell/bin:$PATH
 export RUST_SRC_PATH=/usr/local/src/rust/src
 export TERM="xterm-256color"
-#export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
-#export TOOLCHAINS=swift
+export XDG_CONFIG_HOME=$HOME/.config
 
-export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$HOME/.cabal/bin
-#export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
+export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
 
 
 export PATH="$HOME/.cargo/bin:$PATH"

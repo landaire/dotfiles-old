@@ -106,8 +106,32 @@ man() {
     man "$@"
 }
 
+if [[ `uname` == 'Linux' ]]
+then
+        export LINUX=1
+        export GNU_USERLAND=1
+else
+        export LINUX=
+fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ `uname` == 'Darwin' ]]
+then
+        export OSX=1
+else
+        export OSX=
+fi
+
+if [[ "$OSX" == "1" ]]
+then
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+fi
+
+if [[ "$LINUX" == "1" ]]
+then
+	source /usr/share/fzf/key-bindings.zsh
+	source /usr/share/fzf/completion.zsh
+fi
+
 
 autoload -U add-zsh-hook
 

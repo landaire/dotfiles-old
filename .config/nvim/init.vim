@@ -20,6 +20,8 @@ function! BuildYCM(info)
     !./install.py
   endif
 endfunction
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'francoiscabrol/ranger.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
@@ -32,8 +34,7 @@ Plug 'benekastah/neomake'
 Plug 'Chiel92/vim-autoformat'
 
 "" Color scheme
-Plug 'chriskempson/base16-vim'
-Plug 'blueshirts/darcula'
+Plug 'altercation/vim-colors-solarized'
 
 ""***** Languages *****
 Plug 'keith/swift.vim'
@@ -161,14 +162,6 @@ set exrc
 
 " Show the line number
 set number
-set relativenumber
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
-  autocmd BufLeave,FocusLost,InsertEnter * set number
-augroup end
-
 set mouse=a
 
 " Set backspace stuff
@@ -188,7 +181,7 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
-set scrolloff=3                       " start scrolling 3 lines before edge of viewport
+set scrolloff=999                     " always keep cursor centered
 set shiftround                        " always indent by multiple of shiftwidth
 
 set shortmess+=A                      " ignore annoying swapfile messages
@@ -232,10 +225,9 @@ au FileType gitcommit set tw=72 |  set colorcolumn=50
 
 "" ======== UI Config =========
 " Color scheme
-set background=dark
 let base16colorspace=256	" Access colors present in 256 colorspace
-colorscheme base16-ocean
-let g:base16_shell_path="$HOME/.config/base16-shell"
+set background=dark
+colorscheme solarized
 
 " Enable truecolor support
 set termguicolors
@@ -303,6 +295,7 @@ let g:indentLine_color_term = 239
 
 "" ========= Utility Config ===========
 autocmd BufWritePre * StripWhitespace
+let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
 
 " === Key bindings ===
 
@@ -314,6 +307,9 @@ function! ToggleMovement(firstOp, thenOp)
     execute "normal! " . a:thenOp
   endif
 endfunction
+
+" Ranger bindings
+map <leader>rr :RangerCurrentDirectory<cr>
 
 " The original carat 0 swap
 nnoremap <silent> 0 :call ToggleMovement('^', '0')<CR>
@@ -337,7 +333,7 @@ inoremap <silent> <s-cr> <esc>m`o<esc>``a
 nmap <silent> <BS>	:nohlsearch<CR>
 
 " Remap leader to <SPC>
-let mapleader=' '
+let mapleader=','
 
 if has('nvim')
   " Map ,e to go out of term mode to normal mode
