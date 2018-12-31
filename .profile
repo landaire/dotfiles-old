@@ -37,6 +37,10 @@ if [ -f ~/.secret_profile ]; then
 	source ~/.secret_profile
 fi
 
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  alias tcopy="xclip -selection c"
+fi
+
 #if command -v tmux>/dev/null; then
 #  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 #fi
