@@ -11,3 +11,4 @@ Sublime/User/Sublundo/
 **/*.sublundo-session
 .vim/plugged/
 .vim/view/
+.vim/plugged/
