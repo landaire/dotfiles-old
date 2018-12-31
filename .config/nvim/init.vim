@@ -20,9 +20,24 @@ function! BuildYCM(info)
     !./install.py
   endif
 endfunction
+Plug 'vim-scripts/gtags.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'francoiscabrol/ranger.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'scrooloose/nerdtree'
+"Plug 'francoiscabrol/ranger.vim'
+"Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+"
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 
@@ -34,10 +49,12 @@ Plug 'benekastah/neomake'
 Plug 'Chiel92/vim-autoformat'
 
 "" Color scheme
-Plug 'altercation/vim-colors-solarized'
+Plug 'mhartington/oceanic-next'
 
 ""***** Languages *****
-Plug 'keith/swift.vim'
+"Plug 'sebastianmarkow/deoplete-rust'
+Plug 'keremc/asyncomplete-racer.vim', { 'for': 'rust' }
+
 
 "" vim-go
 Plug 'fatih/vim-go'
@@ -55,7 +72,7 @@ Plug 'mbbill/undotree'         " Show history
 Plug 'tpope/vim-vinegar'
 
 Plug 'rust-lang/rust.vim'      " Rust highlighting and other stuff
-Plug 'racer-rust/vim-racer'    " Rust autocomplete
+"Plug 'racer-rust/vim-racer'    " Rust autocomplete
 
 Plug 'plasticboy/vim-markdown' " Markdown mode
 
@@ -86,7 +103,7 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-fugitive'
 Plug 'xolox/vim-misc'			" Required for easytags
-Plug 'xolox/vim-easytags' " ctags integration
+"Plug 'xolox/vim-easytags' " ctags integration
 Plug 'easymotion/vim-easymotion'
 Plug 'ap/vim-css-color'
 
@@ -227,7 +244,7 @@ au FileType gitcommit set tw=72 |  set colorcolumn=50
 " Color scheme
 let base16colorspace=256	" Access colors present in 256 colorspace
 set background=dark
-colorscheme solarized
+colorscheme OceanicNext
 
 " Enable truecolor support
 set termguicolors
@@ -294,8 +311,14 @@ let g:indentLine_conceallevel = 2  " (default 2)
 let g:indentLine_color_term = 239
 
 "" ========= Utility Config ===========
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd BufWritePre * StripWhitespace
-let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
+map <C-n> :NERDTreeToggle<CR>
+
+"let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
+
+let g:indentLine_fileTypeExclude = ['nerdtree']
 
 " === Key bindings ===
 
@@ -307,6 +330,12 @@ function! ToggleMovement(firstOp, thenOp)
     execute "normal! " . a:thenOp
   endif
 endfunction
+
+
+" For buffer switching
+map <leader>n :bn<cr>
+map <leader>p :bp<cr>
+map <leader>d :bd<cr>
 
 " Ranger bindings
 map <leader>rr :RangerCurrentDirectory<cr>
@@ -381,7 +410,12 @@ let g:vim_markdown_conceal=0
 
 " Rust
 let g:rustfmt_autosave = 1
-let $RUST_SRC_PATH="/usr/local/src/rust/src/"
+let g:racer_experimental_completer = 1
+
+"au FileType rust nmap gd <Plug>(rust-def)
+"au FileType rust nmap gs <Plug>(rust-def-split)
+"au FileType rust nmap gx <Plug>(rust-def-vertical)
+"au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 " fzf
 nnoremap <silent> <leader>p :FZF<CR>
@@ -404,9 +438,33 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd
 " Deoplete
 " neocomplete like
 " https://github.com/Shougo/deoplete.nvim/blob/master/doc/deoplete.txt
-set completeopt+=noinsert
-set completeopt+=noselect
-set completeopt-=preview
+"set completeopt+=noinsert
+"set completeopt+=noselect
+"set completeopt-=preview
+let g:deoplete#enable_at_startup = 1
+" disable autocomplete by default
+"let b:deoplete_disable_auto_complete=1
+"let g:deoplete_disable_auto_complete=1
+
+"call deoplete#custom#source('LanguageClient',
+"            \ 'min_pattern_length',
+"            \ 2)
+
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
+
+" Disable the candidates in Comment/String syntaxes.
+call deoplete#custom#source('_',
+            \ 'disabled_syntaxes', ['Comment', 'String'])
+
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+call deoplete#custom#option('sources', {
+    \ 'python': ['LanguageClient'],
+    \ 'rust': ['LanguageClient'],
+\})
+
 
 set isfname-==
 
@@ -463,3 +521,17 @@ if has('gui_running')
   set guifont=Hack:h11
   set guicolors
 endif
+
+set pyxversion=3
+
+" language server commands
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+            \ 'cpp': ['cquery'],
+            \ 'c': ['cquery'],
+            \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+\ }
+"set completefunc=LanguageClient#complete
+set formatexpr=LanguageClient_textDocument_rangeFormatting()
+inoremap <expr><Tab> (pumvisible()?(empty(v:completed_item)?"\<C-n>":"\<C-y>"):"\<Tab>")
+inoremap <expr><CR> (pumvisible()?(empty(v:completed_item)?"\<CR>\<CR>":"\<C-y>"):"\<CR>")

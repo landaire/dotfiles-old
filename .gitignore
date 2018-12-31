@@ -10,3 +10,4 @@ Package Control.ca-certs/
 Sublime/User/Sublundo/
 **/*.sublundo-session
 .vim/plugged/
+.vim/view/
