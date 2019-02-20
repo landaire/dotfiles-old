@@ -20,6 +20,7 @@ function! BuildYCM(info)
     !./install.py
   endif
 endfunction
+Plug 'vim-scripts/ingo-library'
 Plug 'vim-scripts/gtags.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
@@ -145,7 +146,7 @@ set smartindent
 
 set ruler " Show the line number and column
 
-set textwidth=80 " Maximum width of text that is being inserted. A longer
+"set textwidth=80 " Maximum width of text that is being inserted. A longer
 		 "" line will be broken after white space to get this width.
 
 set formatoptions=c,q,r,t " This is a sequence of letters which describes how
@@ -198,7 +199,7 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
-set scrolloff=999                     " always keep cursor centered
+set scrolloff=3                     " always keep cursor centered
 set shiftround                        " always indent by multiple of shiftwidth
 
 set shortmess+=A                      " ignore annoying swapfile messages
@@ -248,6 +249,8 @@ colorscheme OceanicNext
 
 " Enable truecolor support
 set termguicolors
+
+set colorcolumn=100
 
 if has('nvim')
   " Enable pipe cursor when in insert mode
@@ -319,6 +322,7 @@ map <C-n> :NERDTreeToggle<CR>
 "let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
 
 let g:indentLine_fileTypeExclude = ['nerdtree']
+autocmd FileType help,nerdtree IndentLinesToggle
 
 " === Key bindings ===
 
