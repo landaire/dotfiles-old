@@ -3,12 +3,10 @@ alias cat=ccat
 alias lsl="ls -lah"
 alias lst="ls -laht"
 export GO15VENDOREXPERIMENT=1
-export PATH="$HOME/bin:$HOME/.rvm/bin:$HOME/.local/bin:$PATH:/usr/local/sbin" # Add RVM to PATH for scripting
+export PATH="/usr/local/bin:$HOME/bin:$HOME/.rvm/bin:$HOME/.local/bin:$PATH:/usr/local/sbin" # Add RVM to PATH for scripting
 export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR="vim"
 export PAGER="less"
-export PATH=/usr/pkg/sbin:/usr/pkg/bin:/Library/Haskell/bin:$PATH
-export RUST_SRC_PATH=/usr/local/src/rust/src
 export TERM="xterm-256color"
 export XDG_CONFIG_HOME=$HOME/.config
 
@@ -17,6 +15,9 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$HOME/.cabal/bin
 #export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
 
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
+#export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 alias prettyjson="python -m json.tool"
 alias fix='echo -e "\e<"; reset; stty sane; tput rs1; clear; echo -e "\033c"'
@@ -47,3 +48,4 @@ fi
 #  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 #fi
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
