@@ -1,0 +1,1 @@
+mark-3.0.0.vmb: call delete('/home/lander/.vim/autoload/mark.vim')|call delete('/home/lander/.vim/autoload/mark/cascade.vim')|call delete('/home/lander/.vim/autoload/mark/palettes.vim')|call delete('/home/lander/.vim/plugin/mark.vim')|call delete('/home/lander/.vim/doc/mark.txt')

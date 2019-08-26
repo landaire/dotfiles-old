@@ -318,6 +318,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd BufWritePre * StripWhitespace
 map <C-n> :NERDTreeToggle<CR>
+map <leader>k :NERDTreeFind<CR>
 
 "let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
 
@@ -526,7 +527,9 @@ if has('gui_running')
   set guicolors
 endif
 
-set pyxversion=3
+if has('pythonx')
+  set pyxversion=3
+endif
 
 " language server commands
 let g:LanguageClient_autoStart = 1
