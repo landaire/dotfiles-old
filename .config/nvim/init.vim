@@ -20,6 +20,7 @@ function! BuildYCM(info)
     !./install.py
   endif
 endfunction
+Plug 'zhou13/vim-easyescape'
 Plug 'vim-scripts/ingo-library'
 Plug 'vim-scripts/gtags.vim'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -54,7 +55,11 @@ Plug 'mhartington/oceanic-next'
 
 ""***** Languages *****
 "Plug 'sebastianmarkow/deoplete-rust'
-Plug 'keremc/asyncomplete-racer.vim', { 'for': 'rust' }
+Plug 'rust-lang/rust.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 
 "" vim-go
@@ -73,7 +78,7 @@ Plug 'mbbill/undotree'         " Show history
 Plug 'tpope/vim-vinegar'
 
 Plug 'rust-lang/rust.vim'      " Rust highlighting and other stuff
-"Plug 'racer-rust/vim-racer'    " Rust autocomplete
+Plug 'racer-rust/vim-racer'    " Rust autocomplete
 
 Plug 'plasticboy/vim-markdown' " Markdown mode
 
@@ -137,6 +142,11 @@ nnoremap f za
 " Move around "visual" lines instead of actual lines
 nnoremap j gj
 nnoremap k gk
+
+let g:easyescape_chars = { "j": 1, "k": 1 }
+let g:easyescape_timeout = 100
+cnoremap jk <ESC>
+cnoremap kj <ESC>
 
 set hidden " Allow having multiple dirty buffers
 
@@ -416,6 +426,15 @@ let g:vim_markdown_conceal=0
 " Rust
 let g:rustfmt_autosave = 1
 let g:racer_experimental_completer = 1
+"autocmd User asyncomplete_setup call asyncomplete#register_source(
+"    \ asyncomplete#sources#racer#get_source_options())
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
 
 "au FileType rust nmap gd <Plug>(rust-def)
 "au FileType rust nmap gs <Plug>(rust-def-split)
