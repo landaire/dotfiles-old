@@ -12,13 +12,14 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$HOME/.cabal/bin
-#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-12.0.2.jdk/Contents/Home
 #export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+#export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
+alias lldb="rust-lldb"
 alias prettyjson="python -m json.tool"
 alias fix='echo -e "\e<"; reset; stty sane; tput rs1; clear; echo -e "\033c"'
 alias gc='git commit -m'
@@ -48,4 +49,5 @@ fi
 #  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 #fi
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PATH="/Users/hvx/Library/Python/3.9/bin:$PATH"

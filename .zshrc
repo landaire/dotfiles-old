@@ -2,7 +2,7 @@ source $HOME/.antigen/antigen.zsh
 source $HOME/.profile
 
 export PATH=$PATH:"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:$HOME/go/bin"
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # filename (if known), line number if known, falling back to percent if known,
 # falling back to byte offset, falling back to dash
@@ -55,6 +55,7 @@ setopt sharehistory         # share history across shells
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
+bindkey -v
 
 autoload -U colors && colors
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
@@ -67,7 +68,7 @@ bindkey "^[[1;5D" backward-word
 PURE_PROMPT_SYMBOL=\$
 
 antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
+#antigen bundle sindresorhus/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 
@@ -212,3 +213,14 @@ function tmux() {
 
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+source ~/.credentials
+
+source /Users/hvx/Library/Preferences/org.dystroy.broot/launcher/bash/br
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+eval "$(rbenv init -)"
